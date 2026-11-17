@@ -5,9 +5,12 @@ COBERTURA_DENGUE,bool,0,0.0,Sete dias dentro da hipótese operacional de cobertu
 ANO,int64,0,0.0,"Ano ISO da semana civil, não ano do arquivo",ano,calendário,controle/descritiva,numérica
 SEMANA,int64,0,0.0,Número ISO da semana civil,semana,calendário,controle/descritiva,numérica
 REGISTROS_OBSERVADOS,float64,28326,57.61767218583459,Notificações encontradas antes de validar cobertura semanal,registros,Recife,controle/descritiva,numérica
-POPULACAO_2022,int64,0,0.0,População fixa de referência,habitantes,IBGE 2022,entrada candidata,numérica
-AREA_KM2_IBGE,float64,0,0.0,Área territorial do bairro,km²,IBGE 2022,controle/descritiva,numérica
-DENSIDADE_HAB_KM2,float64,0,0.0,População dividida pela área,habitantes/km²,derivada,entrada candidata,numérica
+AREA_KM2_IBGE,float64,188,0.3824091778202677,Área territorial do bairro,km²,IBGE 2022,controle/descritiva,numérica
+POPULACAO_MUNICIPAL_ANO,float64,188,0.3824091778202677,Total municipal usado na reconciliação anual,habitantes,IBGE/SIDRA ou interpolação 2023,controle/descritiva,numérica
+POPULACAO_BAIRRO_ANO,float64,188,0.3824091778202677,População compatível com bairro e ano,habitantes,CIEVS/IBGE + método documentado,entrada candidata,numérica
+TIPO_POPULACAO,object,188,0.3824091778202677,"Natureza observada, estimada ou projetada do valor populacional",categoria,controle metodológico,controle/descritiva,categórica nominal
+FONTE_POPULACAO,object,188,0.3824091778202677,Fonte e método do valor populacional,categoria,controle metodológico,controle/descritiva,categórica nominal
+DENSIDADE_HAB_KM2_ANO,float64,188,0.3824091778202677,População anual dividida pela área,habitantes/km²,derivada,entrada candidata,numérica
 RPA,object,0,0.0,Região Político-Administrativa,categoria,Prefeitura,entrada candidata,categórica nominal
 NOTIFICACOES_SEMANAIS,float64,188,0.3824091778202677,Notificações na semana t; nome legado não implica confirmação,registros,Recife,entrada candidata,numérica
 INCIDENCIA_100MIL,float64,188,0.3824091778202677,Notificações/população multiplicado por 100.000,registros/100 mil hab.,derivada,controle/descritiva,numérica

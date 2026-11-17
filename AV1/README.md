@@ -48,10 +48,12 @@ O alvo não representa automaticamente casos confirmados, pessoas únicas ou epi
 | [Banco de Oportunidades do Recife](https://bancodeoportunidades.recife.pe.gov.br/) | Desafio de antecipação territorializada e preventiva | Origem do problema e resultados esperados |
 | [Prefeitura do Recife - notificações](https://dados.recife.pe.gov.br/dataset/casos-de-dengue-zika-e-chikungunya) | Data, semana, bairro, identificação e classificação dos registros | Construir a contagem semanal e o alvo futuro |
 | [Prefeitura do Recife - área urbana](https://dados.recife.pe.gov.br/dataset/area-urbana) | Malha oficial, nomes de bairros e RPAs | Padronizar territórios e apoiar o mapa |
-| [IBGE - Censo 2022](https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/Agregados_por_Bairro_xlsx/) | População e área dos bairros | Calcular densidade e taxas populacionais |
+| [CIEVS/Sesau Recife - população 2010–2017](https://cievsrecife.files.wordpress.com/2017/11/populac3a7c3a3o-2010-a-2017-uvepi1.pdf) | Censo 2010 e estimativas institucionais por bairro | Usar população de 2016–2017 no intervalo correspondente |
+| [IBGE - Censo 2022](https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/Agregados_por_Bairro_xlsx/) | População observada e área dos 94 bairros | Servir de checkpoint censitário e calcular densidade e incidência |
+| [IBGE/SIDRA - tabela 6579](https://sidra.ibge.gov.br/tabela/6579) | Totais municipais anuais | Reconciliar estimativas intercensitárias e projeções pós-Censo |
 | [INMET - estação A301](https://portal.inmet.gov.br/dadoshistoricos) | Chuva, temperatura e umidade horárias | Criar atributos climáticos semanais |
 
-Uma única estação climática é compartilhada por todos os bairros e não representa os microclimas do Recife. A população de 2022 aplicada a todo o histórico também é uma aproximação retrospectiva.
+Uma única estação climática é compartilhada por todos os bairros e não representa os microclimas do Recife. A população agora acompanha o ano da observação: 2016–2017 usa a estimativa institucional publicada pelo CIEVS; 2018–2021 é reconstrução intercensitária entre 2017 e 2022 reconciliada ao total municipal; 2022 é Censo observado; 2023–2025 são projeções pós-Censo. Cada linha identifica tipo, fonte e método, sem apresentar estimativas como medições censitárias.
 
 Os códigos de classificação foram interpretados com apoio do [dicionário oficial de dengue do Ministério da Saúde](https://opendatasus.saude.gov.br/dataset/4d5e5d44-58a8-4d67-b8aa-4ef1e4b00a1c/resource/ccc60f03-2834-49a3-98f7-7ee76f50a316/download/dic_dados_dengue.pdf) e do [dicionário do Sinan Online](https://portalsinan.saude.gov.br/images/documentos/Agravos/Dengue/DIC_DADOS_ONLINE.pdf).
 
@@ -82,7 +84,8 @@ A AV1 revisada está técnica e metodologicamente preparada para servir de base 
 | Limpeza | Duplicatas exatas removidas globalmente; ano real auditado; IDs divergentes preservados e comparados com cenário conservador |
 | Calendário | Notificações e clima alinhados à mesma semana civil local, de segunda a domingo |
 | Cobertura | Zero auditado por ano; ausência climática não vira chuva zero; limiares de 80%, 90% e 95% comparados |
-| Feature engineering | Histórico auxiliar de 1–4 semanas; clima defasado de 1–8; chuva acumulada e médias de temperatura/umidade em 2/4/8 semanas; sazonalidade e território |
+| Feature engineering | Histórico auxiliar de 1–4 semanas; clima defasado de 1–8; chuva acumulada e médias de temperatura/umidade em 2/4/8 semanas; sazonalidade, território e população alinhada ao ano |
+| População e incidência | Substituição do Censo 2022 fixo por série bairro-ano, com Censo, estimativas e projeções explicitamente diferenciados |
 | Pré-processamento | One-hot encoding e alternativas Min-Max, StandardScaler e sem escala, ajustados apenas no treino |
 | Validação temporal | Coortes com e sem clima explicitadas, perdas por etapa, divisão por semana-alvo e teste reservado |
 | Rastreabilidade | Relatórios, dataset, configuração e manifesto UTF-8, versões fixadas e validador automático |
@@ -109,7 +112,7 @@ O arquivo local foi inspecionado e reexecutado de ponta a ponta em 17/11/2026 co
 | Registros publicados fora do ano nominal auditados pela data real | 219 |
 | Bairros | 94 |
 | Linhas no painel bairro-semana | 49.162 |
-| Colunas exportadas | 69 |
+| Colunas exportadas | 72 |
 | Linhas com alvo e histórico completos, sem exigir clima | 48.504 |
 | Linhas da coorte comum com histórico e clima completos | 20.304 |
 | Retenção da coorte comum | 41,30% |
@@ -124,7 +127,7 @@ A chuva acumulada em oito semanas apresentou Pearson `0,618` e Spearman `0,631` 
 
 No treino da coorte comum, 60,74% dos alvos são zero, a mediana é 0, a média é 1,05 e o máximo é 71 casos notificados. Essa distribuição justifica baselines fortes, modelos de contagem e análise específica de picos.
 
-**Importante:** a reexecução de 17/11/2026 terminou com as 27 células de código executadas e nenhuma saída de erro. O validador confirmou 49.162 linhas, 69 colunas, 20.304 observações elegíveis, JSONs UTF-8, novos relatórios climáticos e carregamento dos três preprocessadores.
+**Importante:** a reexecução de 17/11/2026 terminou com as 27 células de código executadas e nenhuma saída de erro. O validador confirmou 49.162 linhas, 72 colunas, 20.304 observações elegíveis, população anual completa nas semanas cobertas, JSONs UTF-8, relatórios climáticos e carregamento dos três preprocessadores.
 
 ## 8. Decisões fixadas e limitações levadas à AV2
 
@@ -138,6 +141,7 @@ No treino da coorte comum, 60,74% dos alvos são zero, a mediana é 0, a média 
 8. Correlação bruta, anomalia mensal e estabilidade anual são relatadas juntas; nenhuma substitui a validação temporal da AV2.
 9. Limiares históricos de prioridade foram preparados por bairro apenas no treino e não constituem alertas oficiais.
 10. O protótipo de 2025 permanece ilustrativo até receber previsões validadas da AV2.
+11. População e densidade usam o ano da observação. Somente 2022 é Censo observado dentro da série analítica; estimativas e projeções permanecem identificadas e devem entrar na análise de sensibilidade da AV2.
 
 ## 9. Passagem preparada para a AV2
 
@@ -174,7 +178,7 @@ Nenhum modelo vencedor foi escolhido. A seleção será feita com validação te
 - [`dataset_av1_revisado.csv`](artefatos/execucao_2026-11-17/dataset_av1_revisado.csv);
 - [`manifesto_execucao.json`](artefatos/execucao_2026-11-17/manifesto_execucao.json);
 - [`config_av2.json`](artefatos/execucao_2026-11-17/config_av2.json);
-- [`relatorios/`](artefatos/execucao_2026-11-17/relatorios): aquisição, qualidade, cobertura, integração, atrasos climáticos, janelas acumuladas, controle de sazonalidade, estabilidade anual, limiares de atenção, escalas e coorte;
+- [`relatorios/`](artefatos/execucao_2026-11-17/relatorios): aquisição, qualidade, cobertura, integração, população bairro-ano, reconciliação populacional, atrasos climáticos, janelas acumuladas, controle de sazonalidade, estabilidade anual, limiares de atenção, escalas e coorte;
 - preprocessadores normalizado, padronizado e sem escala, mantidos como evidência da AV1.
 
 Os grandes caches de download não foram copiados para esta pasta. O manifesto conserva URLs, hashes e tamanhos das fontes usadas na execução.

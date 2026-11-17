@@ -38,6 +38,10 @@ Neste projeto, "casos notificados" corresponde aos registros de vigilância disp
 | É útil para prevenção? | Traduzir o resultado validado em mapa e consulta por bairro, sem apresentar classificação exploratória como alerta epidemiológico oficial. |
 | Quais limitações? | Relatar qualidade e cobertura dos dados, erros por período e bairro, falhas nos picos, incertezas e riscos de uso. |
 
+### Controle populacional
+
+População, densidade e incidência devem usar o valor correspondente ao bairro e ao ano da observação. O dataset identifica separadamente Censo observado, estimativa institucional, estimativa intercensitária e projeção pós-Censo. A AV2 deve registrar essa incerteza e comparar o desempenho com e sem os atributos populacionais, sem tratar valores estimados como medições exatas.
+
 ## 5. Critério científico central
 
 A hipótese principal é que chuva, temperatura e umidade, consideradas com atrasos e acumulações biologicamente plausíveis, possam acrescentar capacidade preditiva. A AV1 encontrou sinais exploratórios, especialmente para chuva acumulada, mas associação não comprova causalidade nem ganho de previsão.

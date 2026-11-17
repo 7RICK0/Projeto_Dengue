@@ -27,7 +27,7 @@ O AnteceDengue nasceu do desafio público **“Limitações na Antecipação de 
       <ul>
         <li>Coleta e auditoria dos registros oficiais de dengue.</li>
         <li>Limpeza de datas, bairros, IDs, classificações e duplicidades.</li>
-        <li>Integração com bairros, população, área e clima do INMET.</li>
+        <li>Integração com bairros, população anual, área e clima do INMET.</li>
         <li>Agregação na unidade <strong>bairro-semana</strong>.</li>
         <li>Criação de histórico de casos, sazonalidade e atributos climáticos.</li>
         <li>Chuva, temperatura e umidade com atrasos de 1 a 8 semanas.</li>
@@ -60,7 +60,7 @@ O AnteceDengue nasceu do desafio público **“Limitações na Antecipação de 
 
 | Registros brutos | Registros válidos | Painel bairro-semana | Bairros | Atributos | Coorte com clima completo |
 |---:|---:|---:|---:|---:|---:|
-| 71.663 | 71.175 | 49.162 linhas | 94 | 69 colunas | 20.304 linhas |
+| 71.663 | 71.175 | 49.162 linhas | 94 | 72 colunas | 20.304 linhas |
 
 ### Resultado essencial da análise exploratória
 
@@ -69,7 +69,7 @@ A chuva acumulada em oito semanas apresentou Pearson `0,618` e Spearman `0,631` 
 O notebook revisado possui 56 células, com 27 células de código executadas sem erro. A validação dos artefatos retornou:
 
 ```text
-VALIDACAO_OK linhas=49162 colunas=69 coorte=20304
+VALIDACAO_OK linhas=49162 colunas=72 coorte=20304
 ```
 
 ## Protótipo e acompanhamento
@@ -108,3 +108,4 @@ A AV2 começará com uma referência simples e múltiplos modelos de regressão,
 - O protótipo ainda não está integrado a um modelo treinado.
 - A ferramenta será apoio à decisão e não alerta epidemiológico oficial.
 - Horizontes maiores que uma semana exigem avaliações próprias.
+- A população acompanha o ano da observação; anos sem Censo são estimativas ou projeções identificadas, não contagens observadas.

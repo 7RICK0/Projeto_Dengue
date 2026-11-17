@@ -1,6 +1,6 @@
 {
-  "inicio_utc": "2026-11-17T20:10:04.325961+00:00",
-  "fim_utc": "2026-11-17T20:10:48.127054+00:00",
+  "inicio_utc": "2026-11-17T21:22:56.181377+00:00",
+  "fim_utc": "2026-11-17T21:23:28.870526+00:00",
   "python": "3.12.2",
   "versoes": {
     "pandas": "2.3.3",
@@ -83,6 +83,16 @@
       "bytes": 2697292
     },
     {
+      "origem": "https://cievsrecife.files.wordpress.com/2017/11/populac3a7c3a3o-2010-a-2017-uvepi1.pdf#tabela-25-extracao-conferida",
+      "sha256": "4ede83110fb34c0325fdff38090be3b020b553885855038bc23f4dc11d7b80bb",
+      "bytes": 5256
+    },
+    {
+      "origem": "https://apisidra.ibge.gov.br/values/t/6579/n6/2611606/v/9324/p/2016,2017,2018,2019,2020,2021,2024,2025",
+      "sha256": "0381249109c9bf36463f5785e42a09fdca52963eeb59c166020f09453ae1a147",
+      "bytes": 2488
+    },
+    {
       "origem": "https://dados.recife.pe.gov.br/api/3/action/package_show?id=area-urbana",
       "sha256": "5ae54a296ab1f0530e530c4b3520a172ac889fb051a39b60c9f2835d4794a62c",
       "bytes": 40683
@@ -131,7 +141,7 @@
   ],
   "justificativa_cobertura": "Hipótese operacional: recursos oficiais anuais históricos de 2016–2025 representam o período anual de notificações publicado. Não comprova ausência de subnotificação ou falhas do sistema. Zeros significam ausência de registro na fonte sob essa hipótese. Foram conferidos registros de 2025 até 31/12/2025; não é garantia de completude de vigilância.",
   "linhas_painel": 49162,
-  "colunas": 69,
+  "colunas": 72,
   "definicao_alvo": "notificações A90 publicadas por bairro na semana t+1",
   "coorte_elegivel": 20304,
   "status": "executado_com_fontes_oficiais_pronto_para_av2_com_limitacoes_documentadas"

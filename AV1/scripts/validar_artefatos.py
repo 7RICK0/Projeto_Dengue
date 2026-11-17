@@ -36,6 +36,8 @@ RELATORIOS_OBRIGATORIOS = [
     "periodos_coortes_av2.csv",
     "distribuicao_alvo_treino.csv",
     "limiares_atencao_treino.csv",
+    "populacao_bairro_ano.csv",
+    "reconciliacao_populacao_por_ano.csv",
     "dicionario_completo.csv",
     "resumo_execucao_real.json",
 ]
@@ -72,6 +74,20 @@ def main() -> None:
     assert dataset.loc[~dataset["COBERTURA_DENGUE"], "NOTIFICACOES_SEMANAIS"].isna().all()
     assert dataset.loc[dataset["CONJUNTO"].isin(["treino", "validacao", "teste"]), config["alvo"]].notna().all()
     assert dataset["ELEGIVEL_AV2"].sum() == manifesto["coorte_elegivel"]
+    for coluna in [
+        "POPULACAO_BAIRRO_ANO",
+        "POPULACAO_MUNICIPAL_ANO",
+        "TIPO_POPULACAO",
+        "FONTE_POPULACAO",
+        "DENSIDADE_HAB_KM2_ANO",
+    ]:
+        assert coluna in dataset, f"Variável populacional ausente: {coluna}"
+    cobertas = dataset["COBERTURA_DENGUE"]
+    assert dataset.loc[cobertas, "POPULACAO_BAIRRO_ANO"].notna().all()
+    assert dataset.loc[cobertas, "POPULACAO_BAIRRO_ANO"].gt(0).all()
+    assert "POPULACAO_2022" not in config["entradas_numericas"]
+    assert "POPULACAO_BAIRRO_ANO" in config["entradas_numericas"]
+    assert "DENSIDADE_HAB_KM2_ANO" in config["entradas_numericas"]
     for atraso in range(1, 9):
         for coluna in [
             f"PRECIPITACAO_LAG_{atraso}_MM",
