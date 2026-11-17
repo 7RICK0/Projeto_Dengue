@@ -1,0 +1,138 @@
+{
+  "inicio_utc": "2026-11-17T20:10:04.325961+00:00",
+  "fim_utc": "2026-11-17T20:10:48.127054+00:00",
+  "python": "3.12.2",
+  "versoes": {
+    "pandas": "2.3.3",
+    "numpy": "2.3.4",
+    "matplotlib": "3.10.7",
+    "seaborn": "0.13.2",
+    "scikit-learn": "1.8.0",
+    "openpyxl": "3.1.5",
+    "joblib": "1.5.3"
+  },
+  "fontes": [
+    {
+      "origem": "https://dados.recife.pe.gov.br/api/3/action/package_show?id=casos-de-dengue-zika-e-chikungunya",
+      "sha256": "7a6978c2dd0c3b96d8face6fb218789d420a8260ea5ffb9ff7e36934a4cc84ad",
+      "bytes": 50388
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/c5dd621b-2923-4a35-a599-a78d8e283938/download/casos-de-dengue-em-2016.csv",
+      "sha256": "b3b8eaee8437ebcafbcb82fa1de19e944b376994855dbac730b9587caf82df8f",
+      "bytes": 10247345
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/174737d6-8d7e-49de-ad57-29a1eb983835/download/casos-de-dengue-2017.csv",
+      "sha256": "631db8367eec5e4c1cef2dae72b7504839ee47024136921a704c1b651bd2752a",
+      "bytes": 1234824
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/2fc67253-7580-48a0-b0ba-618fdbbf7307/download/casos-de-dengue-2018.csv",
+      "sha256": "cc0a826be0d71e00d04d4e39b8898c183656833e756c1de94ff7d0bbf3d8d1e6",
+      "bytes": 1390667
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/9631a238-e0a7-4aba-af21-0ca429f04ae7/download/dengue2019.csv",
+      "sha256": "3eb0675c5093db8fba9bc34879a434b1e604ba24b1641204db6848185e1a2511",
+      "bytes": 2727526
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/c68598c9-abfc-4cc8-8f5b-4e24063a7923/download/casos-de-dengue-2020.csv",
+      "sha256": "088c5e9edf26a6d82762bbb6896f85c02267c73ed2f1f12d16d691a8200dc818",
+      "bytes": 1980331
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/816b18c2-783e-4d18-b6c3-4bc4c83491ab/download/casos-de-dengue-2021.csv",
+      "sha256": "de41bea29614f26da3c22e7c1341d422e235311f75c3037f26dc48ac069ad35a",
+      "bytes": 6140255
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/a727370f-b948-45f2-9eab-63de525e610e/download/-casos-de-dengue-2022.csv",
+      "sha256": "1d8846e400cd397c1ab659fdc20da865d2fd42015045f55dbfedfad7f954c09b",
+      "bytes": 1675085
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/18ffe3a6-9f3c-4259-8c85-f3dae9c8d8ae/download/engon-20.csv",
+      "sha256": "529345732689e8c0ba8c0566f1b9a9446ef2a663262ecf64c191616b11baa510",
+      "bytes": 1426174
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/7755fe11-48f0-4797-ac5a-78d6da0fc8d9/download/casos-de-dengue-2024.csv",
+      "sha256": "44f5d1952d138b00d9bdacccbb3e913133c1f18ec7cd79c09dba0c98d040b4b5",
+      "bytes": 6117863
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/3c990c15-29ad-46e5-8fd2-1b83289bb9f5/resource/45a675e2-d387-4019-bb6e-4b915b74b1bf/download/casos-de-dengue-2025.csv",
+      "sha256": "b723a5f2186567e328377b83e733b2d88adb9f2d7d2e47749c91d3f8ce5fd5a9",
+      "bytes": 5377329
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br/api/3/action/package_show?id=area-urbana",
+      "sha256": "5ae54a296ab1f0530e530c4b3520a172ac889fb051a39b60c9f2835d4794a62c",
+      "bytes": 40683
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/1702c764-ec7a-4ef0-9861-8acd0e40c819/resource/5c67ce14-1799-40c4-a37c-9daa04d1761c/download/bairros-do-recife.geojson",
+      "sha256": "2099e5d6a7087596f90f47722c7a89930d7631e7b541db41c1baaee1980ef91a",
+      "bytes": 2182385
+    },
+    {
+      "origem": "https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Agregados_por_Setores_Censitarios/Agregados_por_Bairro_xlsx/Agregados_por_bairros_basico_BR_20260520.zip",
+      "sha256": "ba81beac86f4eab6dd3a4631b6070398ebe20013aec60d32da2267ab3f9ce89a",
+      "bytes": 2697292
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br/api/3/action/package_show?id=area-urbana",
+      "sha256": "5ae54a296ab1f0530e530c4b3520a172ac889fb051a39b60c9f2835d4794a62c",
+      "bytes": 40683
+    },
+    {
+      "origem": "https://dados.recife.pe.gov.br:443/dataset/1702c764-ec7a-4ef0-9861-8acd0e40c819/resource/a378d50a-5e55-4956-a28c-13305acfc2b3/download/bairros-e-rpas-do-recife.csv",
+      "sha256": "1f2b1c9d382420e72090b8a6a31f7fe4a801e391cf6933f3811aa96d8deaf6bc",
+      "bytes": 1610
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2016.zip",
+      "sha256": "62a88787f1d976d7898dba2acbf5874f79cd486816e6d9531c53966557eb20a6",
+      "bytes": 102439056
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2017.zip",
+      "sha256": "0f620edffe32a9df55e2c0619f5f9d2fe9965ffe2fa03bfa48abac4a4a34c061",
+      "bytes": 109677898
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2018.zip",
+      "sha256": "ca44308b336e72d830ab1daedef45a59debc2f52bfda1a8be02c1e3d948861bb",
+      "bytes": 117898042
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2019.zip",
+      "sha256": "f09fa1f4314330be69093f574e7b273954881a5dcb24fc3eca9782545136af49",
+      "bytes": 117560201
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2020.zip",
+      "sha256": "e6cf2016dd3b78d7180dac8cbd482e5f549b227dc87a9dff642ecb7bb9e5ba0b",
+      "bytes": 103653055
+    },
+    {
+      "origem": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2021.zip",
+      "sha256": "360e53e612cf30473371d76b520585f8cd34e61d0d2185e3afe1206ce949433b",
+      "bytes": 80571564
+    }
+  ],
+  "cobertura": [
+    [
+      "2016-01-01",
+      "2025-12-31"
+    ]
+  ],
+  "justificativa_cobertura": "Hipótese operacional: recursos oficiais anuais históricos de 2016–2025 representam o período anual de notificações publicado. Não comprova ausência de subnotificação ou falhas do sistema. Zeros significam ausência de registro na fonte sob essa hipótese. Foram conferidos registros de 2025 até 31/12/2025; não é garantia de completude de vigilância.",
+  "linhas_painel": 49162,
+  "colunas": 69,
+  "definicao_alvo": "notificações A90 publicadas por bairro na semana t+1",
+  "coorte_elegivel": 20304,
+  "status": "executado_com_fontes_oficiais_pronto_para_av2_com_limitacoes_documentadas"
+}

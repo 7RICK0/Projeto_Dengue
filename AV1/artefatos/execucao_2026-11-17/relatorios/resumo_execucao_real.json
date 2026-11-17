@@ -1,0 +1,556 @@
+{
+  "linhas_lidas": 71663,
+  "registros_validos": 71175,
+  "notificacoes_treino_eda": 31105,
+  "inicio_eda": "2016-01-04",
+  "fim_eda": "2020-03-09",
+  "corte_validacao": "2020-03-23",
+  "corte_teste": "2020-11-02",
+  "coorte_comum": 20304,
+  "retencao_coorte_pct": 41.30019120458891,
+  "distribuicao_alvo_treino": {
+    "linhas": 14194.0,
+    "zeros": 8621.0,
+    "zeros_pct": 60.736931097646895,
+    "media": 1.0478371142736367,
+    "mediana": 0.0,
+    "desvio": 2.437212946593895,
+    "p95": 5.0,
+    "p99": 11.0,
+    "maximo": 71.0
+  },
+  "melhor_pearson_lag": {
+    "variavel_climatica": "CHUVA",
+    "notificacoes_semanas_depois": 2,
+    "pearson": 0.1547208061901404,
+    "spearman": 0.3609813403839263,
+    "pares_validos": 198
+  },
+  "melhor_spearman_lag": {
+    "variavel_climatica": "CHUVA",
+    "notificacoes_semanas_depois": 4,
+    "pearson": 0.1301575358813604,
+    "spearman": 0.41586797251092217,
+    "pares_validos": 196
+  },
+  "melhor_feature_climatica_pearson": {
+    "feature": "CHUVA_8S_MM",
+    "pearson": 0.6177498247513747,
+    "spearman": 0.6314294295895478,
+    "pares_validos": 154
+  },
+  "melhor_feature_anomalia_mensal": {
+    "feature": "UMIDADE_MEDIA_PCT",
+    "pearson_anomalia_mensal": -0.22108336446439078,
+    "spearman_anomalia_mensal": -0.1924476233414055,
+    "pares_validos": 196
+  },
+  "correlacoes_lags": [
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 0,
+      "pearson": 0.10917606923075449,
+      "spearman": 0.28406808603782346,
+      "pares_validos": 200
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 1,
+      "pearson": 0.12102373566082716,
+      "spearman": 0.31509593834271216,
+      "pares_validos": 199
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 2,
+      "pearson": 0.1547208061901404,
+      "spearman": 0.3609813403839263,
+      "pares_validos": 198
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 3,
+      "pearson": 0.10548187124791976,
+      "spearman": 0.38754805208858245,
+      "pares_validos": 197
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 4,
+      "pearson": 0.1301575358813604,
+      "spearman": 0.41586797251092217,
+      "pares_validos": 196
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 5,
+      "pearson": 0.12307563874171241,
+      "spearman": 0.3729393120712184,
+      "pares_validos": 195
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 6,
+      "pearson": 0.09395959455682137,
+      "spearman": 0.3835321176175425,
+      "pares_validos": 194
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 7,
+      "pearson": 0.10828580286302057,
+      "spearman": 0.3451900426874832,
+      "pares_validos": 193
+    },
+    {
+      "variavel_climatica": "CHUVA",
+      "notificacoes_semanas_depois": 8,
+      "pearson": 0.12869048541175016,
+      "spearman": 0.33988652160258903,
+      "pares_validos": 192
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 0,
+      "pearson": 0.052962647977547656,
+      "spearman": -0.2091150833205699,
+      "pares_validos": 200
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 1,
+      "pearson": 0.06756370254437453,
+      "spearman": -0.20916004988027043,
+      "pares_validos": 199
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 2,
+      "pearson": 0.055511334795352335,
+      "spearman": -0.20598788642280694,
+      "pares_validos": 198
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 3,
+      "pearson": 0.06840443363316098,
+      "spearman": -0.18354434926659846,
+      "pares_validos": 197
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 4,
+      "pearson": 0.06849009450499115,
+      "spearman": -0.15253174971773095,
+      "pares_validos": 196
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 5,
+      "pearson": 0.08519918134908952,
+      "spearman": -0.09222789121204895,
+      "pares_validos": 195
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 6,
+      "pearson": 0.10278350073716451,
+      "spearman": -0.06161614029765367,
+      "pares_validos": 194
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 7,
+      "pearson": 0.10064233727531907,
+      "spearman": -0.04153523463863462,
+      "pares_validos": 193
+    },
+    {
+      "variavel_climatica": "TEMPERATURA",
+      "notificacoes_semanas_depois": 8,
+      "pearson": 0.10677810840055375,
+      "spearman": -0.020922646610653243,
+      "pares_validos": 192
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 0,
+      "pearson": -0.05493573795677363,
+      "spearman": 0.27511974522161026,
+      "pares_validos": 197
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 1,
+      "pearson": -0.051356183662240595,
+      "spearman": 0.29309925180684687,
+      "pares_validos": 196
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 2,
+      "pearson": -0.012697225202665098,
+      "spearman": 0.32377231748556207,
+      "pares_validos": 195
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 3,
+      "pearson": -0.0393605984620484,
+      "spearman": 0.32020531901817373,
+      "pares_validos": 194
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 4,
+      "pearson": -0.009605556207280402,
+      "spearman": 0.3603725480311588,
+      "pares_validos": 193
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 5,
+      "pearson": 0.001914840509190277,
+      "spearman": 0.3742054386950201,
+      "pares_validos": 192
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 6,
+      "pearson": -0.004810474204845812,
+      "spearman": 0.36571937579371094,
+      "pares_validos": 191
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 7,
+      "pearson": 0.00769775199064863,
+      "spearman": 0.30697123824587064,
+      "pares_validos": 190
+    },
+    {
+      "variavel_climatica": "UMIDADE",
+      "notificacoes_semanas_depois": 8,
+      "pearson": 0.021600146602521266,
+      "spearman": 0.2812380578370693,
+      "pares_validos": 189
+    }
+  ],
+  "correlacoes_features_climaticas": [
+    {
+      "feature": "PRECIPITACAO_SEMANAL_MM",
+      "pearson": 0.12102373566082716,
+      "spearman": 0.31509593834271216,
+      "pares_validos": 199
+    },
+    {
+      "feature": "TEMPERATURA_MEDIA_C",
+      "pearson": 0.06756370254437453,
+      "spearman": -0.20916004988027043,
+      "pares_validos": 199
+    },
+    {
+      "feature": "UMIDADE_MEDIA_PCT",
+      "pearson": -0.051356183662240595,
+      "spearman": 0.29309925180684687,
+      "pares_validos": 196
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_1_MM",
+      "pearson": 0.1547208061901404,
+      "spearman": 0.3609813403839263,
+      "pares_validos": 198
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_2_MM",
+      "pearson": 0.10548187124791976,
+      "spearman": 0.38754805208858245,
+      "pares_validos": 197
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_3_MM",
+      "pearson": 0.1301575358813604,
+      "spearman": 0.41586797251092217,
+      "pares_validos": 196
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_4_MM",
+      "pearson": 0.12307563874171241,
+      "spearman": 0.3729393120712184,
+      "pares_validos": 195
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_5_MM",
+      "pearson": 0.09395959455682137,
+      "spearman": 0.3835321176175425,
+      "pares_validos": 194
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_6_MM",
+      "pearson": 0.10828580286302057,
+      "spearman": 0.3451900426874832,
+      "pares_validos": 193
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_7_MM",
+      "pearson": 0.12869048541175016,
+      "spearman": 0.33988652160258903,
+      "pares_validos": 192
+    },
+    {
+      "feature": "PRECIPITACAO_LAG_8_MM",
+      "pearson": 0.16975420318359546,
+      "spearman": 0.3814911516572826,
+      "pares_validos": 191
+    },
+    {
+      "feature": "TEMPERATURA_LAG_1_C",
+      "pearson": 0.055511334795352335,
+      "spearman": -0.20598788642280694,
+      "pares_validos": 198
+    },
+    {
+      "feature": "TEMPERATURA_LAG_2_C",
+      "pearson": 0.06840443363316098,
+      "spearman": -0.18354434926659846,
+      "pares_validos": 197
+    },
+    {
+      "feature": "TEMPERATURA_LAG_3_C",
+      "pearson": 0.06849009450499115,
+      "spearman": -0.15253174971773095,
+      "pares_validos": 196
+    },
+    {
+      "feature": "TEMPERATURA_LAG_4_C",
+      "pearson": 0.08519918134908952,
+      "spearman": -0.09222789121204895,
+      "pares_validos": 195
+    },
+    {
+      "feature": "TEMPERATURA_LAG_5_C",
+      "pearson": 0.10278350073716451,
+      "spearman": -0.06161614029765367,
+      "pares_validos": 194
+    },
+    {
+      "feature": "TEMPERATURA_LAG_6_C",
+      "pearson": 0.10064233727531907,
+      "spearman": -0.04153523463863462,
+      "pares_validos": 193
+    },
+    {
+      "feature": "TEMPERATURA_LAG_7_C",
+      "pearson": 0.10677810840055375,
+      "spearman": -0.020922646610653243,
+      "pares_validos": 192
+    },
+    {
+      "feature": "TEMPERATURA_LAG_8_C",
+      "pearson": 0.1042191832473124,
+      "spearman": 0.03282419227216321,
+      "pares_validos": 191
+    },
+    {
+      "feature": "UMIDADE_LAG_1_PCT",
+      "pearson": -0.012697225202665098,
+      "spearman": 0.32377231748556207,
+      "pares_validos": 195
+    },
+    {
+      "feature": "UMIDADE_LAG_2_PCT",
+      "pearson": -0.0393605984620484,
+      "spearman": 0.32020531901817373,
+      "pares_validos": 194
+    },
+    {
+      "feature": "UMIDADE_LAG_3_PCT",
+      "pearson": -0.009605556207280402,
+      "spearman": 0.3603725480311588,
+      "pares_validos": 193
+    },
+    {
+      "feature": "UMIDADE_LAG_4_PCT",
+      "pearson": 0.001914840509190277,
+      "spearman": 0.3742054386950201,
+      "pares_validos": 192
+    },
+    {
+      "feature": "UMIDADE_LAG_5_PCT",
+      "pearson": -0.004810474204845812,
+      "spearman": 0.36571937579371094,
+      "pares_validos": 191
+    },
+    {
+      "feature": "UMIDADE_LAG_6_PCT",
+      "pearson": 0.00769775199064863,
+      "spearman": 0.30697123824587064,
+      "pares_validos": 190
+    },
+    {
+      "feature": "UMIDADE_LAG_7_PCT",
+      "pearson": 0.021600146602521266,
+      "spearman": 0.2812380578370693,
+      "pares_validos": 189
+    },
+    {
+      "feature": "UMIDADE_LAG_8_PCT",
+      "pearson": 0.048253623784205064,
+      "spearman": 0.2610867990433793,
+      "pares_validos": 188
+    },
+    {
+      "feature": "CHUVA_2S_MM",
+      "pearson": 0.1993960082557152,
+      "spearman": 0.42185151015586925,
+      "pares_validos": 190
+    },
+    {
+      "feature": "TEMPERATURA_MEDIA_2S_C",
+      "pearson": 0.050520622705411904,
+      "spearman": -0.21458982757385395,
+      "pares_validos": 190
+    },
+    {
+      "feature": "UMIDADE_MEDIA_2S_PCT",
+      "pearson": -0.004216032478080921,
+      "spearman": 0.3322498782361224,
+      "pares_validos": 187
+    },
+    {
+      "feature": "CHUVA_4S_MM",
+      "pearson": 0.3328020745509374,
+      "spearman": 0.5203239669443847,
+      "pares_validos": 176
+    },
+    {
+      "feature": "TEMPERATURA_MEDIA_4S_C",
+      "pearson": -0.015518470364989385,
+      "spearman": -0.23567788096103368,
+      "pares_validos": 176
+    },
+    {
+      "feature": "UMIDADE_MEDIA_4S_PCT",
+      "pearson": 0.11354816700943554,
+      "spearman": 0.41440075473350146,
+      "pares_validos": 173
+    },
+    {
+      "feature": "CHUVA_8S_MM",
+      "pearson": 0.6177498247513747,
+      "spearman": 0.6314294295895478,
+      "pares_validos": 154
+    },
+    {
+      "feature": "TEMPERATURA_MEDIA_8S_C",
+      "pearson": -0.10653994964483408,
+      "spearman": -0.19812208388255498,
+      "pares_validos": 154
+    },
+    {
+      "feature": "UMIDADE_MEDIA_8S_PCT",
+      "pearson": 0.33788018771432515,
+      "spearman": 0.5215975417866905,
+      "pares_validos": 154
+    }
+  ],
+  "qualidade_por_ano": [
+    {
+      "ano": 2016,
+      "lidos": 18612,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 338,
+      "validos": 18274
+    },
+    {
+      "ano": 2017,
+      "lidos": 2454,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 1,
+      "validos": 2453
+    },
+    {
+      "ano": 2018,
+      "lidos": 2687,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 8,
+      "validos": 2679
+    },
+    {
+      "ano": 2019,
+      "lidos": 7308,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 81,
+      "validos": 7227
+    },
+    {
+      "ano": 2020,
+      "lidos": 3540,
+      "duplicatas_identicas_globais": 1,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 10,
+      "validos": 3529
+    },
+    {
+      "ano": 2021,
+      "lidos": 10898,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 0,
+      "validos": 10898
+    },
+    {
+      "ano": 2022,
+      "lidos": 2906,
+      "duplicatas_identicas_globais": 3,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 27,
+      "validos": 2876
+    },
+    {
+      "ano": 2023,
+      "lidos": 3523,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 1,
+      "validos": 3522
+    },
+    {
+      "ano": 2024,
+      "lidos": 10548,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 0,
+      "validos": 10548
+    },
+    {
+      "ano": 2025,
+      "lidos": 9187,
+      "duplicatas_identicas_globais": 0,
+      "agravo_nao_dengue": 0,
+      "fora_recife": 0,
+      "chaves_invalidas": 18,
+      "validos": 9169
+    }
+  ],
+  "conjuntos": {
+    "fora": 29046,
+    "teste": 3008,
+    "treino": 14194,
+    "validacao": 2914
+  },
+  "ids_ano_divergentes": 787
+}

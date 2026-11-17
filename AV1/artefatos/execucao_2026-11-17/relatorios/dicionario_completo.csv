@@ -1,0 +1,70 @@
+variavel,dtype,ausentes,percentual_ausente,descricao,unidade,origem,papel,tipo_conceitual
+BAIRRO,object,0,0.0,Bairro de residência padronizado,categoria,Recife/IBGE,entrada candidata,categórica nominal
+DATA_SEMANA,datetime64[ns],0,0.0,Segunda-feira da semana civil local,data,derivada da notificação,controle/descritiva,data
+COBERTURA_DENGUE,bool,0,0.0,Sete dias dentro da hipótese operacional de cobertura da fonte anual,booleano,configuração,controle/descritiva,binária
+ANO,int64,0,0.0,"Ano ISO da semana civil, não ano do arquivo",ano,calendário,controle/descritiva,numérica
+SEMANA,int64,0,0.0,Número ISO da semana civil,semana,calendário,controle/descritiva,numérica
+REGISTROS_OBSERVADOS,float64,28326,57.61767218583459,Notificações encontradas antes de validar cobertura semanal,registros,Recife,controle/descritiva,numérica
+POPULACAO_2022,int64,0,0.0,População fixa de referência,habitantes,IBGE 2022,entrada candidata,numérica
+AREA_KM2_IBGE,float64,0,0.0,Área territorial do bairro,km²,IBGE 2022,controle/descritiva,numérica
+DENSIDADE_HAB_KM2,float64,0,0.0,População dividida pela área,habitantes/km²,derivada,entrada candidata,numérica
+RPA,object,0,0.0,Região Político-Administrativa,categoria,Prefeitura,entrada candidata,categórica nominal
+NOTIFICACOES_SEMANAIS,float64,188,0.3824091778202677,Notificações na semana t; nome legado não implica confirmação,registros,Recife,entrada candidata,numérica
+INCIDENCIA_100MIL,float64,188,0.3824091778202677,Notificações/população multiplicado por 100.000,registros/100 mil hab.,derivada,controle/descritiva,numérica
+PRECIPITACAO_SEMANAL_MM,float64,22372,45.506692160611856,Soma observada da precipitação na semana t,mm,INMET A301,entrada candidata,numérica
+TEMPERATURA_MEDIA_C,float64,22278,45.31548757170172,Média horária das temperaturas válidas na semana t,°C,INMET A301,entrada candidata,numérica
+UMIDADE_MEDIA_PCT,float64,22842,46.46271510516252,Média horária da umidade válida na semana t,%,INMET A301,entrada candidata,numérica
+HORAS_CHUVA,float64,19646,39.961759082217974,Horas válidas de chuva na semana,horas,INMET A301,controle/descritiva,numérica
+HORAS_TEMPERATURA,float64,19646,39.961759082217974,Horas válidas de temperatura na semana,horas,INMET A301,controle/descritiva,numérica
+HORAS_UMIDADE,float64,19646,39.961759082217974,Horas válidas de umidade na semana,horas,INMET A301,controle/descritiva,numérica
+COBERTURA_CHUVA,float64,0,0.0,Horas válidas de chuva divididas por 168,fração 0–1,derivada do INMET,controle/descritiva,numérica
+COBERTURA_TEMPERATURA,float64,0,0.0,Horas válidas de temperatura divididas por 168,fração 0–1,derivada do INMET,controle/descritiva,numérica
+COBERTURA_UMIDADE,float64,0,0.0,Horas válidas de umidade divididas por 168,fração 0–1,derivada do INMET,controle/descritiva,numérica
+PRECIPITACAO_LAG_1_MM,float64,22372,45.506692160611856,Precipitação semanal em t−1,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_2_MM,float64,22372,45.506692160611856,Precipitação semanal em t−2,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_3_MM,float64,22372,45.506692160611856,Precipitação semanal em t−3,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_4_MM,float64,22372,45.506692160611856,Precipitação semanal em t−4,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_5_MM,float64,22372,45.506692160611856,Precipitação semanal em t−5,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_6_MM,float64,22372,45.506692160611856,Precipitação semanal em t−6,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_7_MM,float64,22372,45.506692160611856,Precipitação semanal em t−7,mm,derivada do INMET,entrada candidata,numérica
+PRECIPITACAO_LAG_8_MM,float64,22372,45.506692160611856,Precipitação semanal em t−8,mm,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_1_C,float64,22278,45.31548757170172,Temperatura média semanal em t−1,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_2_C,float64,22278,45.31548757170172,Temperatura média semanal em t−2,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_3_C,float64,22278,45.31548757170172,Temperatura média semanal em t−3,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_4_C,float64,22278,45.31548757170172,Temperatura média semanal em t−4,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_5_C,float64,22278,45.31548757170172,Temperatura média semanal em t−5,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_6_C,float64,22278,45.31548757170172,Temperatura média semanal em t−6,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_7_C,float64,22278,45.31548757170172,Temperatura média semanal em t−7,°C,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_LAG_8_C,float64,22278,45.31548757170172,Temperatura média semanal em t−8,°C,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_1_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−1,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_2_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−2,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_3_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−3,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_4_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−4,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_5_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−5,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_6_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−6,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_7_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−7,%,derivada do INMET,entrada candidata,numérica
+UMIDADE_LAG_8_PCT,float64,22842,46.46271510516252,Umidade média semanal em t−8,%,derivada do INMET,entrada candidata,numérica
+CHUVA_2S_MM,float64,23312,47.41873804971319,Chuva acumulada nas 2 semanas terminando em t,mm,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_MEDIA_2S_C,float64,23124,47.03632887189293,Temperatura média das 2 semanas terminando em t,°C,derivada do INMET,entrada candidata,numérica
+UMIDADE_MEDIA_2S_PCT,float64,23876,48.565965583174,Umidade média das 2 semanas terminando em t,%,derivada do INMET,entrada candidata,numérica
+CHUVA_4S_MM,float64,24816,50.47801147227533,Chuva acumulada nas 4 semanas terminando em t,mm,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_MEDIA_4S_C,float64,24440,49.7131931166348,Temperatura média das 4 semanas terminando em t,°C,derivada do INMET,entrada candidata,numérica
+UMIDADE_MEDIA_4S_PCT,float64,25380,51.625239005736134,Umidade média das 4 semanas terminando em t,%,derivada do INMET,entrada candidata,numérica
+CHUVA_8S_MM,float64,27260,55.44933078393881,Chuva acumulada nas 8 semanas terminando em t,mm,derivada do INMET,entrada candidata,numérica
+TEMPERATURA_MEDIA_8S_C,float64,26508,53.91969407265774,Temperatura média das 8 semanas terminando em t,°C,derivada do INMET,entrada candidata,numérica
+UMIDADE_MEDIA_8S_PCT,float64,27542,56.022944550669216,Umidade média das 8 semanas terminando em t,%,derivada do INMET,entrada candidata,numérica
+MES,int32,0,0.0,Mês da segunda-feira de referência,mês,calendário,controle/descritiva,numérica
+TRIMESTRE,int32,0,0.0,Trimestre da segunda-feira de referência,trimestre,calendário,controle/descritiva,numérica
+PERIODO_CHUVOSO,int64,0,0.0,Indicador descritivo março–agosto; regra a justificar,0/1,regra herdada,controle/descritiva,binária
+SEMANA_SIN,float64,0,0.0,Seno do ciclo anual pelo dia do ano,adimensional,calendário,entrada candidata,numérica
+SEMANA_COS,float64,0,0.0,Cosseno do ciclo anual pelo dia do ano,adimensional,calendário,entrada candidata,numérica
+NOTIFICACOES_LAG_1,float64,188,0.3824091778202677,Notificações do bairro em t−1,registros,derivada,entrada candidata,numérica
+NOTIFICACOES_LAG_2,float64,282,0.5736137667304015,Notificações do bairro em t−2,registros,derivada,entrada candidata,numérica
+NOTIFICACOES_LAG_3,float64,376,0.7648183556405354,Notificações do bairro em t−3,registros,derivada,entrada candidata,numérica
+NOTIFICACOES_LAG_4,float64,470,0.9560229445506693,Notificações do bairro em t−4,registros,derivada,entrada candidata,numérica
+MEDIA_NOTIFICACOES_4S,float64,470,0.9560229445506693,"Média das quatro semanas t−4 a t−1, todas válidas",registros/semana,derivada,entrada candidata,numérica
+NOTIFICACOES_PROXIMA_SEMANA,float64,188,0.3824091778202677,Notificações na semana t+1 do mesmo bairro,registros,alvo derivado,alvo,numérica
+DATA_ALVO,datetime64[ns],0,0.0,Segunda-feira da semana prevista t+1,data,calendário,controle/descritiva,data
+ELEGIVEL_SEM_CLIMA,bool,0,0.0,"Alvo e histórico disponíveis, independentemente do clima",booleano,controle,controle/descritiva,binária
+ELEGIVEL_AV2,bool,0,0.0,"Alvo, histórico e clima disponíveis na coorte comum",booleano,controle,controle/descritiva,binária
+CONJUNTO,object,0,0.0,"Treino, validação, teste ou fora da coorte",categoria,controle temporal,controle/descritiva,categórica nominal

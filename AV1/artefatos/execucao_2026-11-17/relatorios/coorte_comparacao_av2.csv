@@ -1,0 +1,7 @@
+etapa,linhas,perda_na_etapa,retencao_pct
+painel_total,49162,0,100.0
+semana_dengue_coberta,48974,188,99.61759082217974
+alvo_observado,48880,94,99.4263862332696
+historico_4s_completo,48504,376,98.66156787762907
+clima_atual_completo,25850,22654,52.58126195028681
+clima_lags_e_janelas_8s_completos,20304,5546,41.30019120458891
