@@ -1,182 +1,110 @@
-# AnteceDengue
+# AnteceDengue — Aplicação web de apoio à antecipação territorial da dengue
 
-**Aprendizado de Máquina para antecipação territorial de casos notificados de dengue no Recife.**
+Projeto de Machine Learning que integra histórico epidemiológico, clima e território para estimar **onde**, **quando** e **quanto** os casos notificados de dengue podem aumentar nos bairros do Recife. O objetivo é apoiar ações preventivas antes do crescimento observado dos registros.
 
-O AnteceDengue investiga se a integração entre histórico epidemiológico, clima e território pode indicar **onde**, **quando** e **quanto** os casos notificados de dengue poderão aumentar. A proposta é apoiar a priorização de ações preventivas antes do crescimento observado dos registros.
-
-> **Pergunta central:** é possível antecipar a quantidade de casos notificados de dengue por bairro do Recife usando dados disponíveis até o momento da previsão?
+> **Pergunta central:** é possível antecipar a quantidade de casos notificados de dengue por bairro usando somente informações disponíveis até o momento da previsão?
 
 ## Acessos rápidos
 
-| Recurso | Acesso |
-|---|---|
-| Origem do projeto | [Desafio no Banco de Oportunidades do Recife](https://shiny-raindrop-cee689.netlify.app/) |
-| Arquivos compartilhados | [Pasta do projeto no Google Drive](https://drive.google.com/drive/folders/1oQXWFYeC_-33eYTr_Q75-bXMiFFtg3yE?usp=sharing) |
-| Notebook em nuvem | [AV1 no Google Colab](https://colab.research.google.com/drive/1MpXxyiLApFqNRDW0AjeOK8G3z2Y053i6) |
-| Notebook revisado | [`AnteceDengue_AV1_revisada.ipynb`](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) |
-| Notebook original | [`Projeto_AV1_Dengue_Recife_original.ipynb`](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) |
-| Documentação da Entrega 1 | [`AV1/README.md`](AV1/README.md) |
-| Planejamento da Entrega 2 | [`PLANEJAMENTO_E_PERGUNTAS_AV2.md`](AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md) |
+| Origem do projeto | Arquivos | Notebooks | Entregas |
+|---|---|---|---|
+| [Desafio no Banco de Oportunidades](https://shiny-raindrop-cee689.netlify.app/) | [Google Drive](https://drive.google.com/drive/folders/1oQXWFYeC_-33eYTr_Q75-bXMiFFtg3yE?usp=sharing) | [AV1 no Colab](https://colab.research.google.com/drive/1MpXxyiLApFqNRDW0AjeOK8G3z2Y053i6) | [Relatório técnico da AV1](AV1/README.md) |
+|  |  | [AV1 revisada](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) · [AV1 original](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) | [Planejamento da AV2](AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md) |
 
-> A versão revisada e validada da Entrega 1 neste repositório é a referência técnica atual. A cópia do Colab deve ser sincronizada separadamente quando houver atualização externa autorizada.
+> A AV1 revisada deste repositório é a referência técnica atual. A cópia do Colab precisa ser sincronizada separadamente após alterações autorizadas.
 
-## Origem e problema enfrentado
+## Origem do problema
 
-O projeto nasceu do desafio público **“Limitações na Antecipação de Surtos de Dengue na Cidade do Recife”**, publicado em 23/01/2026 no Banco de Oportunidades do Recife.
+O AnteceDengue nasceu do desafio público **“Limitações na Antecipação de Surtos de Dengue na Cidade do Recife”**, publicado em 23/01/2026. O problema é a dificuldade de integrar dados epidemiológicos, ambientais e territoriais para antecipar áreas e períodos de maior risco, fazendo com que ações de controle possam começar somente quando os registros já estão crescendo.
 
-O desafio aponta que Recife dispõe de dados epidemiológicos, ambientais e operacionais, mas ainda enfrenta limitações para analisá-los de forma integrada e preditiva. Como consequência, parte das ações de controle ocorre quando os casos já estão crescendo.
+## Evolução das entregas
 
-O AnteceDengue transforma esse problema em uma tarefa verificável de Machine Learning:
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>✅ Entrega 1 — concluída</h3>
+      <p><strong>Fundamentos, dados, análise exploratória e preparação.</strong></p>
+      <ul>
+        <li>Coleta e auditoria dos registros oficiais de dengue.</li>
+        <li>Limpeza de datas, bairros, IDs, classificações e duplicidades.</li>
+        <li>Integração com bairros, população, área e clima do INMET.</li>
+        <li>Agregação na unidade <strong>bairro-semana</strong>.</li>
+        <li>Criação de histórico de casos, sazonalidade e atributos climáticos.</li>
+        <li>Chuva, temperatura e umidade com atrasos de 1 a 8 semanas.</li>
+        <li>Janelas climáticas acumuladas de 2, 4 e 8 semanas.</li>
+        <li>Separação temporal entre treino, validação e teste.</li>
+        <li>Notebook executado, artefatos gerados e validação reproduzível.</li>
+      </ul>
+      <p><a href="AV1/README.md"><strong>Ver documentação completa da Entrega 1 →</strong></a></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🚧 Pós-AV1 e início da Entrega 2</h3>
+      <p><strong>Revisão metodológica, modelagem e avaliação.</strong></p>
+      <ul>
+        <li>Base revisada e alinhada ao desafio público.</li>
+        <li>Foco confirmado em clima, casos notificados e território.</li>
+        <li>Sinais exploratórios de chuva acumulada identificados.</li>
+        <li>Alvo inicial: casos notificados por bairro na semana seguinte.</li>
+        <li>Random Forest Regressor como principal candidato.</li>
+        <li>Comparação planejada com referência simples e outros modelos.</li>
+        <li>Experimento central definido: modelos com e sem clima.</li>
+        <li>Seleção por validação temporal; teste final permanece reservado.</li>
+        <li>Protótipo permanece ilustrativo até receber previsões validadas.</li>
+      </ul>
+      <p><a href="AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md"><strong>Ver planejamento completo da Entrega 2 →</strong></a></p>
+    </td>
+  </tr>
+</table>
 
-1. organizar registros oficiais por bairro e semana;
-2. representar chuva, temperatura, umidade, sazonalidade e histórico epidemiológico;
-3. prever a quantidade futura de casos notificados;
-4. identificar bairros e períodos que merecem atenção preventiva;
-5. comunicar resultados, erros e limitações sem apresentar a ferramenta como alerta epidemiológico oficial.
+## Entrega 1 em números
 
-## Protótipo e planejamento
+| Registros brutos | Registros válidos | Painel bairro-semana | Bairros | Atributos | Coorte com clima completo |
+|---:|---:|---:|---:|---:|---:|
+| 71.663 | 71.175 | 49.162 linhas | 94 | 69 colunas | 20.304 linhas |
+
+### Resultado essencial da análise exploratória
+
+A chuva acumulada em oito semanas apresentou Pearson `0,618` e Spearman `0,631` com o total municipal da semana seguinte. Depois da retirada das médias mensais, o Pearson caiu para `0,218`, e a associação variou entre os anos. Portanto, o resultado da AV1 é **promissor, mas exploratório**: justifica testar o clima na AV2, sem provar causalidade ou ganho preditivo.
+
+O notebook revisado possui 56 células, com 27 células de código executadas sem erro. A validação dos artefatos retornou:
+
+```text
+VALIDACAO_OK linhas=49162 colunas=69 coorte=20304
+```
+
+## Protótipo e acompanhamento
 
 Clique nas imagens para abrir os ambientes do projeto.
 
 <table>
   <tr>
-    <td width="50%" align="center">
+    <td width="50%" align="center" valign="top">
       <a href="https://check-detach-31150593.figma.site">
         <img src="prototype/gestao-preview.png" alt="Prévia do protótipo AnteceDengue" width="100%">
       </a>
       <br>
-      <strong>Protótipo publicado</strong><br>
-      Mapa, consulta territorial e apoio à priorização. Os valores atuais são ilustrativos até a integração com a AV2.
+      <strong>Aplicação web — protótipo publicado</strong><br>
+      <small>Mapa e consulta territorial com dados ilustrativos.</small>
     </td>
-    <td width="50%" align="center">
+    <td width="50%" align="center" valign="top">
       <a href="https://trello.com/b/SBeFEpG9/antecedengue-av1-e-av2">
         <img src="prototype/trello-preview.png" alt="Prévia do quadro AnteceDengue no Trello" width="100%">
       </a>
       <br>
       <strong>Planejamento no Trello</strong><br>
-      Backlog, tarefas em andamento, validação e acompanhamento das duas entregas.
+      <small>Backlog, andamento e validação das entregas.</small>
     </td>
   </tr>
 </table>
 
-## ✅ Entrega 1 — Fundamentos, dados e preparação concluídos
+## Próxima etapa
 
-A Entrega 1 estabelece uma base confiável para a modelagem. A versão original foi preservada e a revisão técnica corrigiu inconsistências, reforçou a rastreabilidade e aprofundou a investigação da hipótese climática.
-
-### Escopo técnico realizado
-
-- aquisição de notificações de dengue, Zika e chikungunya no Portal de Dados Abertos do Recife;
-- seleção e validação do agravo de dengue (`A90`);
-- limpeza de datas, bairros, identificadores, classificações e duplicidades;
-- preservação auditável de registros divergentes, sem remoção automática indevida;
-- agregação das notificações na unidade **bairro-semana**;
-- integração com a malha de bairros da Prefeitura do Recife;
-- integração de população e área por bairro com dados do Censo 2022;
-- integração de chuva, temperatura e umidade da estação A301 do INMET;
-- conversão dos registros climáticos horários para a semana local do Recife;
-- controle de qualidade exigindo cobertura mínima de 90% das horas esperadas;
-- criação de atributos temporais, epidemiológicos, territoriais e climáticos;
-- separação cronológica entre treino, validação e teste;
-- demonstração de codificação, escalonamento e preprocessamento ajustados apenas no treino;
-- análise exploratória restrita ao período de treino;
-- geração de dataset, manifesto, configuração, relatórios e preprocessadores reproduzíveis.
-
-### Engenharia de atributos
-
-Foram construídos atributos disponíveis no momento da previsão, evitando o uso de informações futuras:
-
-- histórico de casos notificados do próprio bairro;
-- médias e tendências epidemiológicas recentes;
-- mês e componentes sazonais;
-- população, área, densidade e identificação territorial;
-- chuva, temperatura e umidade com defasagens de uma a oito semanas;
-- chuva acumulada e médias climáticas em janelas de duas, quatro e oito semanas;
-- alvo inicial: quantidade de casos notificados no mesmo bairro na semana seguinte.
-
-### Dimensão da base revisada
-
-| Indicador | Resultado |
-|---|---:|
-| Registros brutos adquiridos | 71.663 |
-| Registros epidemiológicos válidos após limpeza | 71.175 |
-| Linhas no painel bairro-semana | 49.162 |
-| Bairros representados | 94 |
-| Colunas do dataset preparado | 69 |
-| Linhas com coorte climática completa | 20.304 |
-| Período comum com clima completo | 25/04/2016 a 08/11/2021 |
-
-### O que a análise exploratória mostrou
-
-A revisão encontrou um sinal climático promissor, principalmente para chuva acumulada:
-
-- chuva semanal com duas semanas de antecedência: Pearson de aproximadamente `0,155`;
-- chuva semanal com quatro semanas de antecedência: Spearman de aproximadamente `0,416`;
-- chuva acumulada em oito semanas: Pearson `0,618` e Spearman `0,631` com o total municipal da semana seguinte;
-- depois de retirar as médias mensais, o Pearson da chuva acumulada em oito semanas caiu para `0,218`;
-- a intensidade da associação variou entre os anos analisados.
-
-Assim, a resposta da Entrega 1 é **parcialmente positiva e exploratória**: há evidência suficiente para testar o clima na modelagem, mas correlação não prova causalidade nem garante ganho preditivo.
-
-### Validação e rastreabilidade
-
-- notebook revisado com 56 células, sendo 27 células de código executadas sem erro;
-- artefatos vinculados à execução de 17/11/2026;
-- validador reproduzível em [`AV1/scripts/validar_artefatos.py`](AV1/scripts/validar_artefatos.py);
-- resultado da validação: `VALIDACAO_OK linhas=49162 colunas=69 coorte=20304`;
-- dados pessoais e identificadores individuais não são exportados no dataset agregado;
-- documentação completa, decisões e limitações em [`AV1/README.md`](AV1/README.md).
-
-## 🚧 Entrega 2 — Modelagem e avaliação em início
-
-A Entrega 2 deverá verificar se os sinais encontrados na AV1 realmente ajudam a prever períodos futuros. O foco inicial é estimar a **quantidade de casos notificados por bairro na semana seguinte**.
-
-### Modelagem proposta
-
-- **tipo de aprendizado:** supervisionado;
-- **tipo de problema:** regressão de contagem;
-- **candidato principal:** Random Forest Regressor;
-- **comparações:** referência ingênua, Regressão de Poisson, Árvore de Decisão e Gradient Boosting;
-- **métrica principal proposta:** MAE;
-- **métrica complementar:** RMSE;
-- **validação:** divisão temporal, mantendo semanas futuras fora do treinamento;
-- **experimento central:** os mesmos modelos, linhas e períodos comparados com e sem clima.
-
-O modelo final não será escolhido antecipadamente. Random Forest é o principal candidato, mas a seleção dependerá do desempenho, da estabilidade, da interpretação dos erros e da capacidade de generalizar para períodos posteriores.
-
-### Perguntas que a Entrega 2 precisa responder
-
-1. Com quanta antecedência é possível estimar aumentos?
-2. Quais bairros apresentam maior quantidade prevista ou risco de aumento?
-3. Quantos casos notificados são esperados no horizonte avaliado?
-4. Chuva, temperatura e umidade melhoram a previsão?
-5. Quais atrasos e janelas climáticas acrescentam informação útil?
-6. O desempenho se sustenta em períodos futuros não utilizados no treinamento?
-7. A saída permite priorização territorial preventiva?
-8. Quais limitações condicionam o uso responsável dos resultados?
-
-O protocolo detalhado está em [`AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md`](AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md).
-
-## Estrutura principal
-
-```text
-Projeto_Dengue/
-├── AV1/
-│   ├── notebooks/       # notebook original e versão revisada
-│   ├── artefatos/       # dataset agregado, relatórios e preprocessadores
-│   ├── scripts/         # validação reproduzível
-│   ├── docs/            # documentos da primeira entrega
-│   ├── slides/          # apresentação da primeira entrega
-│   └── README.md        # relatório técnico detalhado da AV1
-├── AV2/
-│   └── docs/            # planejamento, perguntas e documentação beta
-├── prototype/           # prévias e documentação do protótipo
-└── README.md            # visão geral e andamento do projeto
-```
+A AV2 começará com uma referência simples e múltiplos modelos de regressão, mantendo os períodos em ordem temporal. O objetivo científico será verificar se chuva, temperatura e umidade melhoram de forma consistente a previsão futura quando comparadas ao histórico epidemiológico. Perguntas, protocolo e entregáveis estão concentrados no [documento de planejamento da AV2](AV2/docs/PLANEJAMENTO_E_PERGUNTAS_AV2.md).
 
 ## Limites de interpretação
 
-- “Casos notificados” são registros de vigilância e não equivalem necessariamente a casos confirmados ou pessoas únicas.
-- As correlações da AV1 são exploratórias e não comprovam causalidade.
-- O protótipo ainda utiliza valores ilustrativos e não representa alerta epidemiológico oficial.
-- Horizontes maiores que uma semana exigirão alvos, dados e validações próprios.
-- O uso operacional dependerá de qualidade dos dados, atualização, cobertura territorial e revisão por profissionais responsáveis.
+- Casos notificados não equivalem necessariamente a casos confirmados ou pessoas únicas.
+- Correlações exploratórias não comprovam causalidade nem capacidade preditiva.
+- O protótipo ainda não está integrado a um modelo treinado.
+- A ferramenta será apoio à decisão e não alerta epidemiológico oficial.
+- Horizontes maiores que uma semana exigem avaliações próprias.
