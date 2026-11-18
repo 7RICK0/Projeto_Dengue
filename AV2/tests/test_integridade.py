@@ -175,6 +175,31 @@ class TestPainel(unittest.TestCase):
         for mes in self.dados["meses"]:
             self.assertLess(mes["emissao"], mes["inicio"])
 
+    def test_servidor_entrega_a_pagina_do_painel(self):
+        from urllib.request import ProxyHandler, build_opener
+
+        from AV2.src.servir_painel import encerrar_servidores, iniciar_servidor
+
+        self.addCleanup(encerrar_servidores)
+        servidor = iniciar_servidor(RAIZ_PROJETO / "AV2" / "painel")
+        navegador = build_opener(ProxyHandler({}))  # sem proxy: o endereço é só desta máquina
+        for arquivo in ("abrir_painel.html", "dados.js"):
+            with navegador.open(f"http://127.0.0.1:{servidor.server_port}/{arquivo}", timeout=10) as resposta:
+                self.assertEqual(resposta.status, 200, arquivo)
+                self.assertGreater(len(resposta.read()), 1000, arquivo)
+
+    def test_botao_do_painel_tem_link_e_textos(self):
+        from AV2.src.servir_painel import TEXTO_DO_BOTAO, montar_caixa
+
+        for no_colab in (False, True):
+            caixa = montar_caixa("http://127.0.0.1:5000/abrir_painel.html?a=1&b=2", no_colab)
+            self.assertIn('href="http://127.0.0.1:5000/abrir_painel.html?a=1&amp;b=2"', caixa)  # endereço escapado
+            self.assertIn('target="_blank"', caixa)  # abre em uma página própria
+            self.assertIn(TEXTO_DO_BOTAO, caixa)
+            self.assertIn("Explore a previsão bairro por bairro", caixa)
+        self.assertIn("só funciona nesta sessão do Colab", montar_caixa("https://x/", True))
+        self.assertIn("só neste computador", montar_caixa("http://127.0.0.1:1/", False))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -23,7 +23,7 @@ A previsão usa o histórico de notificações, o calendário e informações do
       </a>
       <br>
       <strong>Painel da AV2 no Colab</strong><br>
-      <small>Clique para abrir o notebook e selecione Executar tudo.</small>
+      <small>Clique para abrir o notebook, selecione Executar tudo e use o botão do painel.</small>
     </td>
     <td width="33%" align="center" valign="top">
       <a href="https://check-detach-31150593.figma.site">
@@ -133,7 +133,9 @@ Para responder, comparei as três opções nas mesmas semanas e bairros, em um p
 | Gradient Boosting sem clima | 2,978 |
 | **Gradient Boosting com clima** | **2,882** |
 
-O modelo com clima reduziu o erro em **24,9% em relação à média móvel**. Quando comparei as duas versões do mesmo modelo, acrescentar clima reduziu o erro em mais **3,2%**. Esse ganho adicional ainda é incerto: seria preciso verificar se ele aparece em outros períodos.
+O modelo com clima reduziu o erro em **24,9% em relação à média móvel**. Quando comparei as duas versões do mesmo modelo, acrescentar clima reduziu o erro em mais **3,2%**.
+
+> **O clima ajuda? Sim, um pouco, mas o ganho não está comprovado.** Em quatro semanas, o clima reduziu o erro em 3,2% (de 2,978 para 2,882). Com um único ano de teste, em plena pandemia, não dá para provar estatisticamente: o ganho aparece em 87% dos sorteios do *bootstrap*, mas o intervalo de 95% (de −3,0% a +7,6%) inclui zero. Na semana seguinte, o ganho é quase nulo (0,8%). O que aparece com clareza é que o clima **avisa antes**: chuva e umidade sobem cerca de um mês antes das notificações.
 
 Na prática, chuva e umidade podem ajudar a indicar **quando reforçar a atenção**, porque na série histórica elas subiram antes das notificações. A previsão ainda tende a subestimar os maiores picos. O painel permite explorar esses resultados por bairro e comparar as previsões com o que foi observado.
 
@@ -191,13 +193,13 @@ Nada disso substitui o notebook, que continua sendo a entrega principal e abre n
 
 ### O que os testes verificam
 
-Os testes funcionam como um fiscal que refaz as contas. Rodam em cerca de 2 segundos, não treinam nenhum modelo e não alteram nenhum arquivo.
+Os testes funcionam como um fiscal que refaz as contas. Rodam em poucos segundos, não treinam nenhum modelo e não alteram nenhum arquivo.
 
 | Grupo | O que confere | Por que importa |
 |---|---|---|
 | **Preparação dos dados** (5 testes) | Há uma linha por bairro e semana, sem repetição. Semana sem dado não é confundida com semana com zero notificações. O histórico e o clima usam só semanas anteriores à previsão. Nenhuma janela de quatro semanas atravessa os cortes entre treino, validação e teste. O alvo de quatro semanas é mesmo a soma das quatro semanas seguintes | Impedem o erro mais perigoso em previsão: usar informação do futuro |
 | **Teste final** (4 testes) | As métricas recalculadas a partir das previsões salvas dão os valores registrados. As versões com e sem clima usam exatamente as mesmas linhas. Os números principais (2,882, 24,9% e 3,2%) batem com o cálculo. A base de dados é a mesma registrada no manifesto | Garantem que os números mostrados são verdadeiros e que a comparação é justa |
-| **Painel** (2 testes) | Os meses mostrados no painel são iguais aos do arquivo de resultados. Cada previsão foi emitida antes do início do mês previsto | Garantem que o painel mostra o mesmo que o notebook |
+| **Painel** (4 testes) | Os meses mostrados no painel são iguais aos do arquivo de resultados. Cada previsão foi emitida antes do início do mês previsto. O servidor local entrega a página do painel e seus dados. O botão que abre o painel tem o link e os textos certos | Garantem que o painel mostra o mesmo que o notebook |
 | **Notebook do zero** (`AV2/tests/rodar_notebook_do_zero.py`, cerca de 2 minutos) | Executa o notebook inteiro, do começo ao fim, e compara as tabelas e os textos com os salvos | Prova que o notebook roda sem erro e reproduz os mesmos resultados |
 
 ## Resultados principais
@@ -223,7 +225,7 @@ A janela móvel de quatro semanas começa depois de cada emissão. O **mês de c
 | Quando? | O horizonte principal cobre as próximas quatro semanas. A próxima semana foi avaliada separadamente. |
 | Onde? | O painel mostra a previsão por bairro e permite comparar os bairros prioritários. |
 | Quanto? | A saída é uma contagem prevista de notificações no período selecionado. |
-| O clima ajuda? | A comparação nas mesmas observações mostrou uma melhora adicional, ainda inconclusiva. |
+| O clima ajuda? | **Sim, um pouco, mas sem comprovação estatística.** Em quatro semanas, o erro caiu 3,2% (de 2,978 para 2,882), com ganho em 87% dos sorteios do *bootstrap* e intervalo de 95% de −3,0% a +7,6%, que inclui zero. Na semana seguinte, quase nada (0,8%). O valor mais claro é avisar antes: chuva e umidade sobem cerca de um mês antes das notificações. |
 | Quais atrasos climáticos importam? | A umidade de sete a oito semanas antes se destacou na análise de importância. |
 | O resultado se sustenta no futuro? | O teste usou observações posteriores às da validação. Falta confirmar o desempenho em outros períodos com clima. |
 | A saída é territorialmente útil? | O mapa e a lista por bairro ajudam a ordenar visitas e acompanhar os valores observados. |
@@ -258,9 +260,9 @@ O notebook segue a sequência **Modelagem → Experimentos → Avaliação → M
 
 ## Como rodar
 
-**No Colab**, abra o [notebook](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb) e use **Ambiente de execução → Executar tudo**. A primeira célula de código baixa o repositório quando necessário e exibe o painel.
+**No Colab**, abra o [notebook](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb) e use **Ambiente de execução → Executar tudo**. A primeira célula de código baixa o repositório e mostra, sozinha, o botão **Abrir o painel em uma página própria**. Ele abre o painel em uma nova aba. O link é privado e só funciona na sua sessão.
 
-**No navegador**, abra `AV2/painel/abrir_painel.html` na cópia local. O painel funciona offline.
+**No navegador**, abra `AV2/painel/abrir_painel.html` na cópia local. O painel funciona offline. Ao executar o notebook no computador, a primeira célula também mostra o botão do painel, que abre só nesta máquina.
 
 **No PC**, execute na raiz do repositório:
 
