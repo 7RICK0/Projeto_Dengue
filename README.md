@@ -1,8 +1,17 @@
 # AnteceDengue — Previsão de dengue nos bairros do Recife
 
-**Aluno** Erick Acioli Belo · **Disciplina** Aprendizado de Máquina, CESAR School · **Professora** Chaina Oliveira
+[![CI](https://github.com/7RICK0/Projeto_Dengue/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/7RICK0/Projeto_Dengue/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](AV2/painel/abrir_painel.html)
 
-O AnteceDengue estima quantas notificações de dengue cada um dos 94 bairros do Recife pode ter nas próximas quatro semanas. A previsão ajuda a identificar onde priorizar ações preventivas antes de os registros aumentarem.
+**Aluno** Erick Acioli Belo · **Instituição** CESAR School · **Disciplina** Aprendizado de Máquina · **Professora** Chaina Oliveira
+
+O AnteceDengue é um projeto de aprendizado de máquina que estima quantas notificações de dengue podem ser registradas em cada um dos 94 bairros do Recife nas próximas quatro semanas. Uma notificação é um registro de suspeita feito pela vigilância em saúde. A confirmação depende de investigação.
+
+A previsão usa o histórico de notificações, o calendário e informações dos bairros. Na AV2, comparei o desempenho com e sem dados de chuva, temperatura e umidade para medir quanto o clima ajuda. O painel mostra as previsões ao lado dos registros observados e ajuda a identificar onde priorizar visitas e outras ações preventivas.
 
 ## Principais links
 
@@ -35,13 +44,24 @@ O AnteceDengue estima quantas notificações de dengue cada um dos 94 bairros do
   </tr>
 </table>
 
-| Material | Acesso |
-|---|---|
-| **Notebook no Google Colab** | **[Abrir no Colab](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb)** |
-| Documentação final | [Abrir PDF](AV2/documentos/Documentacao_AnteceDengue_AV1_AV2.pdf) |
-| Painel web | [Como abrir o painel](#como-rodar) |
-| Instruções de execução | [Como rodar](#como-rodar) |
-| Pasta do projeto | [Google Drive](https://drive.google.com/drive/folders/1oQXWFYeC_-33eYTr_Q75-bXMiFFtg3yE?usp=sharing) |
+<table>
+  <tr>
+    <td width="50%" align="center" valign="middle">
+      <a href="AV2/documentos/Documentacao_AnteceDengue_AV1_AV2.pdf">
+        <img src="prototype/documentacao-preview.png" alt="Capa da documentação final do AnteceDengue" width="230">
+      </a>
+      <br>
+      <strong>Documentação final</strong>
+    </td>
+    <td width="50%" align="center" valign="middle">
+      <a href="https://drive.google.com/drive/folders/1oQXWFYeC_-33eYTr_Q75-bXMiFFtg3yE?usp=sharing">
+        <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" width="96">
+      </a>
+      <br>
+      <strong>Google Drive</strong>
+    </td>
+  </tr>
+</table>
 
 ## Entregas
 
@@ -49,33 +69,33 @@ O AnteceDengue estima quantas notificações de dengue cada um dos 94 bairros do
 |---|---|
 | Reuni notificações, clima e dados territoriais em uma base semanal por bairro. Na revisão, investiguei a relação entre o clima das semanas anteriores e as notificações. | Comparei modelos com e sem clima para prever notificações e avaliei os resultados em um período reservado. O painel mostra a previsão por bairro e permite compará-la com os registros observados. |
 | [Documentação original da Entrega 1 (PDF)](AV1/docs/Documentacao_AV1_Dengue.pdf) · [Slides da apresentação (PDF)](AV1/slides/Apresentacao_AV1.pdf) | [Notebook executado](AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb) · [Relatório técnico da AV2](AV2/documentos/Relatorio_AnteceDengue_AV2.pdf) |
-| [README da AV1](AV1/README.md) · [Notebook original](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) · [Notebook revisado](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) · [AV1 no Colab](https://colab.research.google.com/drive/1MpXxyiLApFqNRDW0AjeOK8G3z2Y053i6) | [Protocolo usado na AV2](AV2/documentos/PROTOCOLO_EXPERIMENTAL.md) · [Planejamento e perguntas do projeto](AV2/documentos/PLANEJAMENTO_E_PERGUNTAS_AV2.md) |
+| [Notebook original](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) · [Notebook revisado](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) · [AV1 no Colab](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) | [Protocolo usado na AV2](AV2/documentos/PROTOCOLO_EXPERIMENTAL.md) · [Planejamento e perguntas do projeto](AV2/documentos/PLANEJAMENTO_E_PERGUNTAS_AV2.md) |
 
 ## Arquitetura do projeto
 
 ```text
 AnteceDengue/
-├── README.md           ← apresentação, resultados e instruções do projeto
-├── AV1/                ← dados, análise exploratória e preparação
-│   ├── README.md       ← detalhes da primeira entrega
-│   ├── docs/           ← documentação original da AV1
-│   ├── slides/         ← apresentação da AV1
-│   ├── notebooks/      ← versões original e revisada da análise
-│   ├── dados/          ← dados de referência para a preparação
-│   ├── artefatos/      ← base revisada, configuração e tabelas da análise
-│   ├── scripts/        ← validação dos artefatos da AV1
-│   └── requirements.txt  ← dependências Python do projeto
-├── AV2/                ← modelagem, avaliação e painel
-│   ├── documentos/     ← documentação final e materiais da AV2
-│   │   ├── Documentacao_AnteceDengue_AV1_AV2.pdf  (completa, 21 páginas)
-│   │   ├── Relatorio_AnteceDengue_AV2.pdf         (resumo, 8 páginas)
-│   │   ├── PROTOCOLO_EXPERIMENTAL.md              (regras fixadas antes de modelar)
-│   │   └── PLANEJAMENTO_E_PERGUNTAS_AV2.md        (as 8 perguntas do projeto)
-│   ├── notebooks/      ← notebook executado da AV2
-│   ├── painel/         ← painel web (abra abrir_painel.html)
-│   ├── src/            ← código que o notebook e o painel usam
-│   ├── artefatos/      ← previsões, métricas e gráficos
-│   └── tests/          ← testes automáticos
+├── README.md
+├── .github/workflows/
+├── AV1/                ← preparação dos dados e análise exploratória
+│   ├── docs/
+│   ├── slides/
+│   ├── notebooks/
+│   ├── dados/
+│   ├── artefatos/      ← base revisada usada na AV2
+│   ├── scripts/
+│   └── requirements.txt
+├── AV2/                ← modelagem e avaliação
+│   ├── documentos/
+│   │   ├── Documentacao_AnteceDengue_AV1_AV2.pdf
+│   │   ├── Relatorio_AnteceDengue_AV2.pdf
+│   │   ├── PROTOCOLO_EXPERIMENTAL.md
+│   │   └── PLANEJAMENTO_E_PERGUNTAS_AV2.md
+│   ├── notebooks/
+│   ├── painel/         ← abra abrir_painel.html
+│   ├── src/
+│   ├── artefatos/      ← previsões e métricas registradas
+│   └── tests/
 └── prototype/          ← mapas do Recife e prévias do Figma e do Trello
 ```
 
@@ -89,31 +109,48 @@ AnteceDengue/
 
 **Fluxo** · dados da AV1 → `src/` (calcula) → `artefatos/` (guarda) → notebook e painel (mostram) → `tests/` (conferem)
 
+## Sumário
+
+- [Resumo em um minuto](#resumo-em-um-minuto)
+- [De onde veio](#de-onde-veio)
+- [Pergunta e objetivo](#pergunta-e-objetivo)
+- [Dados](#dados)
+- [Como fiz](#como-fiz)
+- [Por que usei código e testes além do Colab](#por-que-usei-código-e-testes-além-do-colab)
+- [Resultados principais](#resultados-principais)
+- [Perguntas respondidas](#perguntas-respondidas)
+- [Limitações e melhorias](#limitações-e-melhorias)
+- [Como rodar](#como-rodar)
+
 ## Resumo em um minuto
 
-O **MAE** é o erro absoluto médio. Ele mede, em média, a distância entre o número previsto e o observado, em notificações por bairro.
+Para planejar ações de prevenção no Recife, é útil saber quais bairros podem ter mais notificações de dengue nas próximas semanas. Na AV2, investiguei duas perguntas: um modelo de aprendizado de máquina consegue prever melhor do que usar a média das semanas recentes? Acrescentar chuva, temperatura e umidade melhora a previsão do mesmo modelo?
 
-| Teste das próximas quatro semanas | MAE |
+Para responder, comparei as três opções nas mesmas semanas e bairros, em um período reservado para o teste. O **MAE**, ou erro absoluto médio, mostra quanto a previsão se distanciou da contagem observada, em média. Quanto menor o valor, mais próxima ficou a previsão.
+
+| Previsão para as próximas quatro semanas | Erro médio em notificações por bairro (MAE) |
 |---|---:|
 | Média móvel das semanas recentes | 3,835 |
 | Gradient Boosting sem clima | 2,978 |
 | **Gradient Boosting com clima** | **2,882** |
 
-O ganho de usar aprendizado de máquina foi sólido no teste: o Gradient Boosting com clima reduziu o erro em **24,9%** frente à média móvel. Acrescentar clima ao mesmo modelo reduziu o erro em **3,2%**, um ganho provável, ainda sem comprovação estatística. Chuva e umidade costumam subir antes de as notificações aumentarem. O principal ponto fraco foi estimar o tamanho dos surtos, pois o modelo tende a subestimar os picos.
+O modelo com clima reduziu o erro em **24,9% em relação à média móvel**. Quando comparei as duas versões do mesmo modelo, acrescentar clima reduziu o erro em mais **3,2%**. Esse ganho adicional ainda é incerto: seria preciso verificar se ele aparece em outros períodos.
+
+Na prática, chuva e umidade podem ajudar a indicar **quando reforçar a atenção**, porque na série histórica elas subiram antes das notificações. A previsão ainda tende a subestimar os maiores picos. O painel permite explorar esses resultados por bairro e comparar as previsões com o que foi observado.
 
 ## De onde veio
 
 O projeto nasceu do desafio público **Limitações na Antecipação de Surtos de Dengue na Cidade do Recife**, divulgado pelo Banco de Oportunidades. Quando o aumento aparece nos registros, a vigilância tem menos tempo para organizar a prevenção. [Ver desafio original](https://shiny-raindrop-cee689.netlify.app/)
 
 - **AV1.** Reuni notificações, clima e território em uma base por bairro e semana. A associação entre chuva acumulada e notificações enfraqueceu após descontar a sazonalidade, ou seja, os padrões recorrentes ao longo do ano.
-- **Revisão da AV1.** Padronizei os arquivos anuais, revisei duplicatas e registros com datas divergentes e documentei como cada variável foi calculada. A base distingue semanas sem cobertura de semanas com zero notificações. [Ver AV1 revisada](AV1/README.md)
+- **Revisão da AV1.** Padronizei os arquivos anuais, revisei duplicatas e registros com datas divergentes e documentei como cada variável foi calculada. A base distingue semanas sem cobertura de semanas com zero notificações. [Ver notebook revisado](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb)
 - **AV2.** Usei essa base para testar a previsão e medir quanto o clima acrescenta ao histórico de notificações.
 
 ## Pergunta e objetivo
 
 **Chuva, temperatura e umidade ajudam a prever a quantidade de notificações por bairro além das informações disponíveis no histórico, no calendário e no território?**
 
-Equipes de vigilância e controle de vetores podem consultar os resultados para priorizar visitas, inspeções e ações preventivas. O alvo é a contagem de **notificações de dengue A90** na base de vigilância. Uma notificação é um registro sujeito a investigação e pode não corresponder a um caso confirmado.
+Equipes de vigilância e controle de vetores podem consultar os resultados para priorizar visitas, inspeções e ações preventivas. O alvo é a contagem de **notificações de dengue A90** na base de vigilância.
 
 ## Dados
 
