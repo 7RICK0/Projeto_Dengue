@@ -12,7 +12,7 @@ O AnteceDengue nasceu do desafio público [“Limitações na Antecipação de S
 
 A AV1 cobre o ciclo inicial do projeto: entendimento do problema, aquisição e descrição dos dados, análise exploratória, tratamento, pré-processamento e engenharia de atributos. O treinamento e a seleção do modelo pertencem à AV2.
 
-Ao fim da AV1, o plano era começar a AV2 pela semana seguinte. Na AV2, a análise principal passou a ser a soma das **próximas 4 semanas**, com a semana seguinte como complemento; cada horizonte recebeu alvo e validação próprios (ver [AV2](../AV2/README.md)).
+Ao fim da AV1, o plano era começar a AV2 pela semana seguinte. Na AV2, a análise principal passou a ser a soma das **próximas 4 semanas**, com a semana seguinte como complemento; cada horizonte recebeu alvo e validação próprios (ver [modelagem da AV2](../README.md#como-fiz)).
 
 ## 2. Materiais da Entrega 1
 
@@ -145,7 +145,7 @@ No treino da coorte comum, 60,74% dos alvos são zero, a mediana é 0, a média 
 
 ## 9. Passagem preparada para a AV2
 
-> Plano registrado ao fim da AV1. Na execução da AV2, a árvore de decisão isolada deu lugar ao **Gradient Boosting**, a **média das quatro semanas anteriores** entrou como segunda referência simples e o horizonte principal passou a ser **4 semanas**. O resultado está em [AV2/README.md](../AV2/README.md).
+> Plano registrado ao fim da AV1. Na execução da AV2, a árvore de decisão isolada deu lugar ao **Gradient Boosting**, a **média das quatro semanas anteriores** entrou como segunda referência simples e o horizonte principal passou a ser **4 semanas**. O resultado está em [resultados da AV2](../README.md#resultados-principais).
 
 Ao fim da semana `t`, o primeiro experimento usará apenas informações disponíveis até esse momento para estimar `NOTIFICACOES_PROXIMA_SEMANA` no mesmo bairro.
 

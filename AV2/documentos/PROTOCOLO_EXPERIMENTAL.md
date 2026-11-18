@@ -1,6 +1,6 @@
-# Protocolo experimental da AV2 — versão aprovada
+# Protocolo usado na AV2
 
-> Estado: **aprovado e congelado antes da modelagem**. Alterações metodológicas relevantes deverão ser justificadas e confirmadas antes de consultar o teste final.
+As regras foram definidas antes da modelagem e a configuração final foi escolhida na validação, antes de consultar o teste reservado.
 
 ## Decisões já sustentadas pelo problema e pelos requisitos
 
@@ -15,7 +15,7 @@
 - teste final reservado até a seleção pela validação;
 - resultados analisados no geral, por bairro, por período, em semanas positivas, em picos e no agregado municipal.
 
-## Protocolo aprovado
+## Desenho da avaliação
 
 ### 1. Coortes de análise
 
@@ -49,13 +49,15 @@ A população reconstruída na AV1 para 2018–2021 usa o Censo de 2022 e contin
 
 ### 4. Referências e modelos candidatos
 
-- baseline de persistência: repetir a contagem atual;
-- baseline de média móvel: média das quatro semanas anteriores;
-- regressão de Poisson;
-- Random Forest;
-- Gradient Boosting Regressor.
+| Modelo ou referência | Por que entrou na comparação |
+|---|---|
+| **Persistência** | Repetir a contagem recente dá uma referência simples para a próxima semana. |
+| **Média móvel** | Usar a média das quatro semanas anteriores reduz a influência de uma semana atípica e dá uma referência de curto prazo. |
+| **Regressão de Poisson** | É um modelo simples e interpretável para contagens. Serve para comparar com modelos que aprendem relações mais complexas. |
+| **Random Forest** | Combina várias árvores de decisão. Permite investigar relações não lineares e interações entre variáveis, como chuva e temperatura. |
+| **Gradient Boosting** | Ajusta árvores em sequência para reduzir os erros anteriores. Foi testado com perda de Poisson, adequada a uma contagem não negativa. |
 
-São três modelos de aprendizado de máquina e duas referências simples. A professora exige múltiplos modelos candidatos, mas não determina quantidade mínima. Três candidatos oferecem diversidade suficiente sem aumentar experimentos sem justificativa. Nenhum algoritmo será tratado previamente como vencedor.
+As referências simples ajudam a medir se o aprendizado de máquina acrescenta valor. Os três candidatos representam formas diferentes de aprender com a mesma base.
 
 Para a janela de quatro semanas, os dois baselines repetem por quatro semanas o nível semanal de sua respectiva regra.
 
@@ -63,20 +65,21 @@ A primeira rodada usa Poisson regularizada, Random Forest com profundidade e tam
 
 ### 5. Métricas e regra de seleção
 
-- métrica principal: MAE, na unidade de notificações por bairro no horizonte avaliado;
-- métricas complementares: RMSE e erro absoluto agregado municipal;
-- diagnósticos: MAE em semanas positivas, erro nos maiores picos, distribuição por bairro e estabilidade por período;
-- seleção: desempenho na validação, estabilidade, capacidade de lidar com picos, simplicidade e custo;
-- teste: uma avaliação final após congelar a configuração.
+- **MAE (erro absoluto médio).** Foi a métrica principal porque mostra a distância média entre a previsão e o valor observado na unidade do projeto: notificações por bairro. A seleção usou o MAE de validação de cada horizonte.
+- **RMSE (raiz do erro quadrático médio).** Dá mais peso a erros grandes e ajuda a identificar modelos que erram muito em algumas previsões.
+- **Erro absoluto no total municipal.** Compara a soma prevista para o Recife com a soma observada. Ajuda a avaliar o planejamento para a cidade inteira, enquanto o MAE por bairro mede a precisão territorial.
+- **Erros em períodos com notificações e nos picos.** Mostram como o modelo se sai quando há registros e quando a demanda pode ser maior. A análise por bairro e por período verifica se o desempenho varia no território e ao longo do tempo.
+
+O teste final foi realizado após fixar a configuração escolhida na validação.
 
 ### 6. Experimentos de sensibilidade
 
 - com e sem clima, na coorte comum;
 - com e sem população/densidade, pois parte da série é estimada ou projetada;
 - todas as notificações A90 versus classificação encerrada, apenas como sensibilidade agregada se a base disponível permitir sem vazamento;
-- os dois horizontes aprovados têm alvo e validação próprios. Horizontes adicionais exigem nova avaliação.
+- os dois horizontes estudados têm alvo e validação próprios. Horizontes adicionais exigem nova avaliação.
 
-## Seleção aprovada antes do teste
+## Seleção feita na validação
 
 | Horizonte | Referência escolhida por MAE na validação | Candidato para comparação climática |
 |---|---|---|
@@ -85,5 +88,10 @@ A primeira rodada usa Poisson regularizada, Random Forest com profundidade e tam
 
 O Gradient Boosting tem os mesmos parâmetros, atributos e semente da validação. O ajuste final usa a união de treino e validação de cada horizonte. A primeira emissão no teste só usa alvos de desenvolvimento fechados até a semana de referência. Nas emissões seguintes, os históricos se atualizam conforme os dados observados até cada origem e o estimador permanece fixo. O limiar diagnóstico de pico continua sendo o percentil 90 dos alvos positivos do treino original.
 
-A avaliação final usa o MAE como métrica principal. O efeito do clima será medido entre as duas versões do Gradient Boosting no mesmo conjunto, e a utilidade prática será comparada à referência simples já escolhida. O teste fornece evidência de generalização para as configurações aprovadas.
+A avaliação final usa o MAE como métrica principal. O efeito do clima será medido entre as duas versões do Gradient Boosting no mesmo conjunto, e a utilidade prática será comparada à referência simples já escolhida. O teste fornece evidência de generalização para as configurações avaliadas.
 
+### Resultado da escolha
+
+O **Gradient Boosting** teve o menor MAE entre os candidatos de aprendizado de máquina na validação, com e sem clima, nos dois horizontes. As referências simples também foram levadas ao teste, porque eram competitivas na validação.
+
+No teste de **quatro semanas**, horizonte principal, o **Gradient Boosting com clima** obteve o menor MAE entre as opções avaliadas: **2,882 notificações por bairro**, contra **2,978** do mesmo modelo sem clima e **3,835** da média móvel. Na **próxima semana**, o Gradient Boosting com clima também teve o menor MAE por bairro (**1,016**), com uma diferença pequena em relação à versão sem clima.
