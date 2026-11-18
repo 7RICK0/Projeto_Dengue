@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AnteceDengue · Risco de dengue nos bairros do Recife</title>
+  <link rel="stylesheet" href="estilos.css?v=10">
+  <script defer src="dados.js?v=10"></script>
+  <script defer src="graficos.js?v=10"></script>
+  <script defer src="explorador_bairros.js?v=9"></script>
+  <script defer src="secoes_resultados_clima.js?v=9"></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="limite topo-linha">
+      <div class="marca">Antece<span>Dengue</span><small>Recife</small></div>
+      <nav class="secoes" aria-label="Seções do painel">
+        <a href="#previsao">Previsão</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#clima">Clima</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="limite">
+    <!-- 1. PREVISÃO POR BAIRRO (parte principal) -->
+    <section id="previsao" class="capitulo abertura" aria-labelledby="titulo-previsao">
+      <h1 id="titulo-previsao">Explore a previsão bairro por bairro</h1>
+      <div class="controles">
+        <div class="filtro"><span id="periodicidade">Visão</span><div class="alternancia" role="group" aria-labelledby="periodicidade">
+          <button type="button" id="ver-mes" aria-pressed="true">Mensal</button>
+          <button type="button" id="ver-ano" aria-pressed="false">Anual</button>
+        </div></div>
+        <label for="mes" id="filtro-mes">Mês <select id="mes"></select></label>
+        <label for="ano" id="filtro-ano" hidden>Ano <select id="ano"></select></label>
+        <label for="cenario" id="filtro-cenario">Cenário <select id="cenario"><option value="com">Com clima</option><option value="sem">Sem clima</option></select></label>
+        <label for="bairro">Bairro <select id="bairro"></select></label>
+      </div>
+      <p class="situacao" id="situacao" aria-live="polite"></p>
+
+      <section class="painel">
+        <div class="mapa-area">
+          <div class="cabecalho-secao">
+            <h2 id="titulo-mapa">Risco no mês</h2>
+            <label for="mapa-valor">Mostrar <select id="mapa-valor">
+              <option value="previsto">Risco previsto</option>
+              <option value="observado">Risco real</option>
+              <option value="prioridade">Acerto dos 10 maiores</option>
+              <option value="ganho">Onde o clima ajudou</option>
+            </select></label>
+          </div>
+          <svg id="mapa" aria-label="Mapa interativo dos bairros do Recife" role="group"></svg>
+          <ul class="legenda" id="legenda" aria-label="Legenda do mapa"></ul>
+          <p class="nota" id="nota-lente"></p>
+        </div>
+        <div class="detalhe">
+          <h2 id="nome-bairro">Bairro</h2>
+          <p id="risco-bairro" class="risco" aria-live="polite"></p>
+          <dl class="valores" aria-live="polite">
+            <div><dt id="rotulo-previsto">Previstas no mês</dt><dd id="previsto">—</dd></div>
+            <div><dt id="rotulo-observado">Reais no mês</dt><dd id="observado">—</dd></div>
+          </dl>
+          <p id="referencia" class="nota"></p>
+          <h3>O bairro no ano de teste</h3>
+          <ul class="legenda-linhas" id="l-bairro"></ul>
+          <div id="g-bairro" class="grafico-svg"></div>
+          <details class="semanal">
+            <summary id="titulo-detalhe">Semana a semana</summary>
+            <div class="tabela-wrap"><table><thead><tr><th id="coluna-periodo" scope="col">Semana</th><th id="coluna-data" scope="col">Emissão</th><th scope="col">Previstas</th><th scope="col">Reais</th></tr></thead><tbody id="semanas"></tbody></table></div>
+          </details>
+        </div>
+      </section>
+
+      <div class="grade-2">
+        <section class="resumo" aria-labelledby="titulo-total">
+          <div class="cabecalho-secao"><h2 id="titulo-total">Recife no mês</h2><span id="rotulo-periodo"></span></div>
+          <dl class="indicadores" aria-live="polite">
+            <div><dt>Previstas</dt><dd id="total-previsto">—</dd></div>
+            <div><dt>Reais</dt><dd id="total-observado">—</dd></div>
+            <div><dt id="rotulo-diferenca">Diferença</dt><dd id="total-diferenca">—</dd></div>
+          </dl>
+          <p id="analise" class="analise" aria-live="polite"></p>
+          <p id="nota-metodo" class="nota" hidden></p>
+        </section>
+        <section class="ranking">
+          <h2 id="titulo-ranking">Bairros de maior risco</h2>
+          <ol id="maiores" aria-live="polite"></ol>
+        </section>
+      </div>
+
+      <section class="evolucao" aria-labelledby="titulo-serie">
+        <div class="cabecalho-secao"><h2 id="titulo-serie">Recife mês a mês</h2>
+        <ul class="legenda-serie" aria-label="Séries do gráfico"><li>Reais</li><li>Previstas</li></ul></div>
+        <div class="grafico-wrap"><div class="grafico-grade">
+          <div id="eixo-grafico" class="eixo-grafico" aria-hidden="true"></div>
+          <div id="grafico" class="grafico"></div>
+        </div></div>
+        <p class="nota">Clique num mês para abrir o mapa daquele período.</p>
+      </section>
+    </section>
+
+    <!-- 2. RESULTADOS -->
+    <section id="resultados" class="capitulo" aria-labelledby="titulo-resultados">
+      <h2 class="titulo-capitulo" id="titulo-resultados">O modelo com clima erra menos</h2>
+      <dl class="destaques">
+        <div><dt>menos erro que o método simples</dt><dd id="d-ganho-ml">—</dd></div>
+        <div><dt>de aviso antecipado dado pela chuva</dt><dd>~1 mês</dd></div>
+        <div><dt>dos 10 bairros de maior risco acertados por mês</dt><dd id="d-prior">—</dd></div>
+        <div><dt>bairros com mais dengue em que o clima ajudou</dt><dd id="d-bairros">—</dd></div>
+      </dl>
+      <div class="grade-2">
+        <div class="bloco">
+          <div class="cabecalho-secao"><h3>Erro médio por bairro</h3>
+            <div class="alternancia pequena" role="group" aria-label="Horizonte">
+              <button type="button" id="h4" aria-pressed="true">Mensal</button>
+              <button type="button" id="h1" aria-pressed="false">Semanal</button>
+            </div></div>
+          <div id="g-mae" class="grafico-svg"></div>
+          <p class="nota" id="n-metricas"></p>
+        </div>
+        <div class="bloco">
+          <h3>Recife no ano de teste</h3>
+          <ul class="legenda-linhas" id="l-cidade"></ul>
+          <div id="g-cidade" class="grafico-svg"></div>
+          <p class="nota">Mais perto do real que o método simples em 29 de 30 janelas. Lacunas: meses sem dados de clima.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CLIMA -->
+    <section id="clima" class="capitulo" aria-labelledby="titulo-clima">
+      <h2 class="titulo-capitulo" id="titulo-clima">A chuva vem antes da dengue</h2>
+      <div class="bloco">
+        <ul class="legenda-linhas" id="l-calendario"></ul>
+        <div id="g-calendario" class="grafico-svg"></div>
+        <p class="nota">A chuva sobe em março e abril; as notificações chegam ao pico em maio e junho, cerca de um mês depois.</p>
+      </div>
+    </section>
+
+
+    <footer>AnteceDengue · Erick Acioli Belo · Aprendizado de Máquina · CESAR School · Profa. Chaina Oliveira. Dados: Prefeitura do Recife (notificações A90) e INMET (clima). Teste de nov/2020 a nov/2021. Avaliação retrospectiva.</footer>
+  </main>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # Entrega 1 - AV1: entendimento e preparação dos dados
 
 - **Projeto:** AnteceDengue
-- **Disciplina:** Aprendizado de Máquina (SI031) - CESAR School
+- **Disciplina:** Aprendizado de Máquina - CESAR School
 - **Professora:** Chaina Oliveira
 - **Aluno:** Erick Acioli Belo
 - **Nota da entrega original:** 8,0/10
@@ -12,7 +12,7 @@ O AnteceDengue nasceu do desafio público [“Limitações na Antecipação de S
 
 A AV1 cobre o ciclo inicial do projeto: entendimento do problema, aquisição e descrição dos dados, análise exploratória, tratamento, pré-processamento e engenharia de atributos. O treinamento e a seleção do modelo pertencem à AV2.
 
-O primeiro experimento preditivo da AV2 estimará a quantidade de notificações do mesmo bairro na semana seguinte. Horizontes de semanas, meses ou ano permanecem como objetivo de produto, mas cada horizonte precisará de alvo, dados e validação próprios.
+Ao fim da AV1, o plano era começar a AV2 pela semana seguinte. Na AV2, a análise principal passou a ser a soma das **próximas 4 semanas**, com a semana seguinte como complemento; cada horizonte recebeu alvo e validação próprios (ver [AV2](../AV2/README.md)).
 
 ## 2. Materiais da Entrega 1
 
@@ -25,7 +25,7 @@ O primeiro experimento preditivo da AV2 estimará a quantidade de notificações
 ### Revisão preparada para a AV2
 
 - [`notebooks/AnteceDengue_AV1_revisada.ipynb`](notebooks/AnteceDengue_AV1_revisada.ipynb): notebook reorganizado, corrigido e reexecutado com fontes oficiais em 17/11/2026.
-- [`artefatos/execucao_2026-11-17/`](artefatos/execucao_2026-11-17): dataset, manifesto, configuração, preprocessadores e relatórios produzidos pela mesma execução.
+- [`artefatos/`](artefatos): dataset, manifesto, configuração, preprocessadores e relatórios produzidos pela mesma execução.
 - [Notebook revisado no Colab](https://colab.research.google.com/drive/1MpXxyiLApFqNRDW0AjeOK8G3z2Y053i6).
 - [Pasta oficial do projeto no Google Drive](https://drive.google.com/drive/folders/1oQXWFYeC_-33eYTr_Q75-bXMiFFtg3yE?usp=sharing).
 
@@ -145,6 +145,8 @@ No treino da coorte comum, 60,74% dos alvos são zero, a mediana é 0, a média 
 
 ## 9. Passagem preparada para a AV2
 
+> Plano registrado ao fim da AV1. Na execução da AV2, a árvore de decisão isolada deu lugar ao **Gradient Boosting**, a **média das quatro semanas anteriores** entrou como segunda referência simples e o horizonte principal passou a ser **4 semanas**. O resultado está em [AV2/README.md](../AV2/README.md).
+
 Ao fim da semana `t`, o primeiro experimento usará apenas informações disponíveis até esse momento para estimar `NOTIFICACOES_PROXIMA_SEMANA` no mesmo bairro.
 
 ### Conjuntos de atributos
@@ -175,10 +177,10 @@ Nenhum modelo vencedor foi escolhido. A seleção será feita com validação te
 
 ### Artefatos preservados da execução de 17/11/2026
 
-- [`dataset_av1_revisado.csv`](artefatos/execucao_2026-11-17/dataset_av1_revisado.csv);
-- [`manifesto_execucao.json`](artefatos/execucao_2026-11-17/manifesto_execucao.json);
-- [`config_av2.json`](artefatos/execucao_2026-11-17/config_av2.json);
-- [`relatorios/`](artefatos/execucao_2026-11-17/relatorios): aquisição, qualidade, cobertura, integração, população bairro-ano, reconciliação populacional, atrasos climáticos, janelas acumuladas, controle de sazonalidade, estabilidade anual, limiares de atenção, escalas e coorte;
+- [`dataset_av1_revisado.csv`](artefatos/dataset_av1_revisado.csv);
+- [`manifesto_execucao.json`](artefatos/manifesto_execucao.json);
+- [`config_av2.json`](artefatos/config_av2.json);
+- [`relatorios/`](artefatos/relatorios): aquisição, qualidade, cobertura, integração, população bairro-ano, reconciliação populacional, atrasos climáticos, janelas acumuladas, controle de sazonalidade, estabilidade anual, limiares de atenção, escalas e coorte;
 - preprocessadores normalizado, padronizado e sem escala, mantidos como evidência da AV1.
 
 Os grandes caches de download não foram copiados para esta pasta. O manifesto conserva URLs, hashes e tamanhos das fontes usadas na execução.

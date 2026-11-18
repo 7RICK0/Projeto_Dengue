@@ -1,17 +1,9 @@
-# Materiais da disciplina mantidos apenas como referência local.
-docs/referencias_disciplina/
-
-# Contexto interno de coordenação mantido apenas no ambiente local.
-AGENTS.md
-CONTEXTO_E_PLANEJAMENTO.md
-
 # Backups e inventários locais.
 AnteceDengue_Backup_*.zip
-inventario_claude_*/
 Trello_AnteceDengue_*.json
 
 # Arquivos de ambiente local.
-ajustar_firewall_lg.ps1
+.venv/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/

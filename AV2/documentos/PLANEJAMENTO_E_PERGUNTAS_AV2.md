@@ -74,3 +74,5 @@ Nenhum dos dois coeficientes, isoladamente, demonstra causalidade ou garante que
 - relatório final com respostas explícitas às oito perguntas;
 - apresentação final coerente com os resultados reproduzíveis;
 - mapa e consulta por bairro alimentados somente por previsões validadas, mantendo como ilustrativo tudo o que ainda não vier do modelo.
+
+**Importante — última ação da AV2: pedir o check final da professora.** Fazer o pedido com os materiais já prontos, depois da conferência interna da entrega.
