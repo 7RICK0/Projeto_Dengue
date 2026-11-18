@@ -30,7 +30,7 @@ A previsão usa o histórico de notificações, o calendário e informações do
         <img src="prototype/gestao-preview.png" alt="Prévia do protótipo AnteceDengue" width="100%">
       </a>
       <br>
-      <strong>Aplicação web — protótipo publicado</strong><br>
+      <strong>Figman — protótipo publicado</strong><br>
       <small>Mapa e consulta territorial com dados ilustrativos.</small>
     </td>
     <td width="33%" align="center" valign="top">
