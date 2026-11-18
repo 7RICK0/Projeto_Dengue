@@ -136,8 +136,12 @@ class TestTesteFinal(unittest.TestCase):
     def test_dados_do_manifesto_conferem(self):
         import hashlib
         # O manifesto foi gravado quando a pasta se chamava execucao_2026-11-17; o conteúdo é o que importa.
+        # Ele registrou os arquivos com quebra de linha do Windows (CRLF), e o Git os guarda com LF.
+        # Por isso a quebra de linha é padronizada para CRLF antes do hash, em qualquer sistema.
         for nome in ("dataset_av1_revisado.csv", "config_av2.json"):
-            atual = hashlib.sha256((RAIZ_PROJETO / "AV1" / "artefatos" / nome).read_bytes()).hexdigest()
+            conteudo = (RAIZ_PROJETO / "AV1" / "artefatos" / nome).read_bytes()
+            conteudo = conteudo.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+            atual = hashlib.sha256(conteudo).hexdigest()
             self.assertEqual(atual, self.manifesto["sha256"][f"AV1/artefatos/execucao_2026-11-17/{nome}"], nome)
 
 

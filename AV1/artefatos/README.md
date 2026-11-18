@@ -1,8 +1,8 @@
 # Artefatos da AV1: a base de dados que a AV2 usa
 
-Saídas do notebook revisado da AV1 (`AV1/notebooks/AnteceDengue_AV1_revisada.ipynb`), executado com as fontes oficiais em 17/11/2026.
+Saídas do notebook revisado da AV1 (`AV1/notebooks/AnteceDengue_AV1_revisada.ipynb`), executado com as fontes oficiais.
 
-## Usados pela AV2 (não apagar)
+## Usados pela AV2
 
 | Arquivo | O que é |
 |---|---|

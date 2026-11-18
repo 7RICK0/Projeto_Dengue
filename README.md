@@ -68,35 +68,34 @@ A previsão usa o histórico de notificações, o calendário e informações do
 | ✅ AV1 — Dados e análise exploratória | ✅ AV2 — Modelagem e previsão |
 |---|---|
 | Reuni notificações, clima e dados territoriais em uma base semanal por bairro. Na revisão, investiguei a relação entre o clima das semanas anteriores e as notificações. | Comparei modelos com e sem clima para prever notificações e avaliei os resultados em um período reservado. O painel mostra a previsão por bairro e permite compará-la com os registros observados. |
-| [Documentação original da Entrega 1 (PDF)](AV1/docs/Documentacao_AV1_Dengue.pdf) · [Slides da apresentação (PDF)](AV1/slides/Apresentacao_AV1.pdf) | [Notebook executado](AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb) · [Relatório técnico da AV2](AV2/documentos/Relatorio_AnteceDengue_AV2.pdf) |
-| [Notebook original](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) · [Notebook revisado](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) · [AV1 no Colab](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) | [Protocolo usado na AV2](AV2/documentos/PROTOCOLO_EXPERIMENTAL.md) · [Planejamento e perguntas do projeto](AV2/documentos/PLANEJAMENTO_E_PERGUNTAS_AV2.md) |
+| [Documentação original da Entrega 1 (PDF)](AV1/documentos/Documentacao_AV1_Dengue.pdf) · [Slides da apresentação (PDF)](AV1/slides/Apresentacao_AV1.pdf) | [Notebook executado](AV2/notebooks/AnteceDengue_AV2_modelagem.ipynb) · [Relatório técnico da AV2](AV2/documentos/Relatorio_AnteceDengue_AV2.pdf) |
+| [Notebook original](AV1/notebooks/Projeto_AV1_Dengue_Recife_original.ipynb) · [Notebook revisado](AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) · [AV1 no Colab](https://colab.research.google.com/github/7RICK0/Projeto_Dengue/blob/main/AV1/notebooks/AnteceDengue_AV1_revisada.ipynb) | [Protocolo usado na AV2](AV2/documentos/PROTOCOLO_EXPERIMENTAL.md) |
 
 ## Arquitetura do projeto
 
 ```text
 AnteceDengue/
 ├── README.md
-├── .github/workflows/
-├── AV1/                ← preparação dos dados e análise exploratória
-│   ├── docs/
+├── .github/workflows/                              ← verificação automática (CI) a cada envio ao GitHub
+├── AV1/                                            ← preparação dos dados e análise exploratória
+│   ├── documentos/
 │   ├── slides/
 │   ├── notebooks/
-│   ├── dados/
-│   ├── artefatos/      ← base revisada usada na AV2
-│   ├── scripts/
+│   ├── dados/                                      ← população por bairro (CIEVS, 2010–2017)
+│   ├── artefatos/                                  ← base revisada usada na AV2
+│   ├── scripts/                                    ← validador que confere a integridade da base
 │   └── requirements.txt
-├── AV2/                ← modelagem e avaliação
+├── AV2/                                            ← modelagem e avaliação
 │   ├── documentos/
-│   │   ├── Documentacao_AnteceDengue_AV1_AV2.pdf
-│   │   ├── Relatorio_AnteceDengue_AV2.pdf
-│   │   ├── PROTOCOLO_EXPERIMENTAL.md
-│   │   └── PLANEJAMENTO_E_PERGUNTAS_AV2.md
+│   │   ├── Documentacao_AnteceDengue_AV1_AV2.pdf   ← projeto completo, da AV1 à AV2
+│   │   ├── Relatorio_AnteceDengue_AV2.pdf          ← resumo técnico da AV2
+│   │   └── PROTOCOLO_EXPERIMENTAL.md               ← regras fixadas antes de modelar
 │   ├── notebooks/
-│   ├── painel/         ← abra abrir_painel.html
-│   ├── src/
-│   ├── artefatos/      ← previsões e métricas registradas
-│   └── tests/
-└── prototype/          ← mapas do Recife e prévias do Figma e do Trello
+│   ├── painel/                                     ← painel web com o mapa de risco por bairro
+│   ├── src/                                        ← código que prepara, treina e avalia os modelos
+│   ├── artefatos/                                  ← previsões e métricas registradas (teste final travado)
+│   └── tests/                                      ← testes automáticos contra erros e vazamento de dados
+└── prototype/                                      ← mapas do Recife e prévias do Figma e do Trello
 ```
 
 1. **Dados da AV1.** A [base revisada](AV1/artefatos/dataset_av1_revisado.csv) chega pronta, com 49.162 linhas, uma por bairro e semana.
@@ -116,7 +115,7 @@ AnteceDengue/
 - [Pergunta e objetivo](#pergunta-e-objetivo)
 - [Dados](#dados)
 - [Como fiz](#como-fiz)
-- [Por que usei código e testes além do Colab](#por-que-usei-código-e-testes-além-do-colab)
+- [O que fiz além do que foi pedido, e por quê](#o-que-fiz-além-do-que-foi-pedido-e-por-quê)
 - [Resultados principais](#resultados-principais)
 - [Perguntas respondidas](#perguntas-respondidas)
 - [Limitações e melhorias](#limitações-e-melhorias)
@@ -174,9 +173,32 @@ A base revisada reúne **49.162 observações**. A comparação direta com e sem
 
 O **teste final foi usado uma única vez**. Os scripts `avaliar_teste_final.py` e `avaliar_mes_calendario.py` se recusam a rodar de novo quando os resultados já existem, de propósito. O notebook lê as previsões salvas. [Ver inventário dos artefatos](AV2/artefatos/README.md)
 
-## Por que usei código e testes além do Colab
+## O que fiz além do que foi pedido, e por quê
 
-Usei o VS Code para organizar o código reutilizável em arquivos `.py`. O notebook reúne as explicações e os resultados, e os testes verificam os alvos, a divisão temporal e a correspondência entre as previsões salvas e o painel. A trava dos scripts protege a avaliação reservada. O painel permite explorar os resultados por bairro no navegador.
+O pedido da AV2 foi um notebook de modelagem e avaliação, a documentação e a apresentação. Tudo isso está completo e funciona sem o restante. Mesmo assim, quis ir além por três motivos: **conferir que os resultados estão certos**, **permitir que qualquer pessoa repita o experimento** e **mostrar como a previsão seria usada na prática**. Cada item abaixo existe por um desses motivos.
+
+| O que acrescentei | O que é | Por que fiz | O que acrescenta ao projeto |
+|---|---|---|---|
+| **Código em arquivos `.py`** (`AV2/src/`) | As contas (preparar os dados, treinar e avaliar os modelos) ficam em arquivos Python que o notebook importa. Usei o VS Code para organizá-los | Evitar copiar o mesmo código em várias células e arquivos, o que gera versões diferentes da mesma conta | Uma só versão de cada conta, usada pelo notebook, pelo painel e pelos testes. O notebook fica mais limpo para ler |
+| **Testes automáticos** (`AV2/tests/`) | Programas que conferem sozinhos se o trabalho está certo ([detalhes abaixo](#o-que-os-testes-verificam)) | Um erro pequeno, como usar dados do futuro, deixaria os resultados bonitos e falsos sem ninguém perceber | Provam que os números não têm vazamento de dados e batem com o que foi salvo |
+| **Teste final travado** | Os scripts `avaliar_teste_final.py` e `avaliar_mes_calendario.py` se recusam a rodar de novo | Rodar o teste várias vezes e ficar com o melhor resultado invalidaria a avaliação | Garante que o período reservado foi usado uma única vez |
+| **Resultados gravados com manifesto** (`AV2/artefatos/`) | Métricas e previsões salvas em arquivos, com data, versões e parâmetros da execução | O notebook precisa abrir rápido, e os números oficiais não podem mudar a cada execução | Qualquer número pode ser conferido depois, e o notebook roda em poucos minutos |
+| **Painel web** (`AV2/painel/`) | Página com mapa de risco por bairro, que abre no navegador sem internet | A AV1 previa uma aplicação para gestores, e tabelas não mostram onde agir primeiro | Mostra o resultado como a vigilância o usaria e serve de demonstração |
+| **Verificação automática no GitHub** (`.github/workflows/`) | O GitHub confere a base e roda os testes numa máquina limpa a cada envio | Provar que o projeto funciona fora do meu computador | O selo **CI** no topo mostra se o projeto está funcionando |
+| **Protocolo experimental** | Documento com as regras (alvos, cortes, métrica e modelos) escritas antes de modelar | Impedir que as regras mudem depois de ver o resultado | Mostra que as escolhas vieram antes dos resultados |
+
+Nada disso substitui o notebook, que continua sendo a entrega principal e abre no Colab com um clique. A estrutura em volta dele é o que garante que ele está certo.
+
+### O que os testes verificam
+
+Os testes funcionam como um fiscal que refaz as contas. Rodam em cerca de 2 segundos, não treinam nenhum modelo e não alteram nenhum arquivo.
+
+| Grupo | O que confere | Por que importa |
+|---|---|---|
+| **Preparação dos dados** (5 testes) | Há uma linha por bairro e semana, sem repetição. Semana sem dado não é confundida com semana com zero notificações. O histórico e o clima usam só semanas anteriores à previsão. Nenhuma janela de quatro semanas atravessa os cortes entre treino, validação e teste. O alvo de quatro semanas é mesmo a soma das quatro semanas seguintes | Impedem o erro mais perigoso em previsão: usar informação do futuro |
+| **Teste final** (4 testes) | As métricas recalculadas a partir das previsões salvas dão os valores registrados. As versões com e sem clima usam exatamente as mesmas linhas. Os números principais (2,882, 24,9% e 3,2%) batem com o cálculo. A base de dados é a mesma registrada no manifesto | Garantem que os números mostrados são verdadeiros e que a comparação é justa |
+| **Painel** (2 testes) | Os meses mostrados no painel são iguais aos do arquivo de resultados. Cada previsão foi emitida antes do início do mês previsto | Garantem que o painel mostra o mesmo que o notebook |
+| **Notebook do zero** (`AV2/tests/rodar_notebook_do_zero.py`, cerca de 2 minutos) | Executa o notebook inteiro, do começo ao fim, e compara as tabelas e os textos com os salvos | Prova que o notebook roda sem erro e reproduz os mesmos resultados |
 
 ## Resultados principais
 
@@ -206,8 +228,6 @@ A janela móvel de quatro semanas começa depois de cada emissão. O **mês de c
 | O resultado se sustenta no futuro? | O teste usou observações posteriores às da validação. Falta confirmar o desempenho em outros períodos com clima. |
 | A saída é territorialmente útil? | O mapa e a lista por bairro ajudam a ordenar visitas e acompanhar os valores observados. |
 | Quais são as limitações? | Cobertura climática, atrasos dos registros, período de teste e dificuldade nos picos. |
-
-[Ver planejamento e perguntas do projeto](AV2/documentos/PLANEJAMENTO_E_PERGUNTAS_AV2.md)
 
 ### As onze perguntas da professora
 
